@@ -10,6 +10,7 @@ export interface User {
 }
 
 export interface Project {
+
     id: string
     title: string
     ownerId: string
@@ -22,11 +23,13 @@ export interface Project {
 }
 
 export interface TechObject {
+
     id: string
     name: string
 }
 
 export interface ProjectState {
+    
     id: string
     name: string
 }
