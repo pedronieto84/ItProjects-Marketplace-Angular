@@ -1,1 +1,24 @@
 <p>projects works!</p>
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel title="Simple">
+        <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+      
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel>
+        <ng-template ngbPanelTitle>
+            <span>&#9733; <b>Fancy</b> title &#9733;</span>
+        </ng-template>
+        <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Disabled" [disabled]="true">
+        <ng-template ngbPanelContent>
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+       
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>
