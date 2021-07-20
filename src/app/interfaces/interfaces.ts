@@ -8,6 +8,10 @@ export interface User {
     publishedProjects: string[] // refers to the project id's
     admin?: boolean;
 
+
+
+    
+
 }
 
 export interface Project {
