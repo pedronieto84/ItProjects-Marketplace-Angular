@@ -6,6 +6,7 @@ export interface User {
     password: string
     verified: boolean
     publishedProjects: string[] // refers to the project id's
+    admin?: boolean;
 
 }
 
