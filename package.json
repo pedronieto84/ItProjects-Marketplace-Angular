@@ -9,9 +9,8 @@
     "test": "ng test"
   },
   "environment": {
-    "node":"14.17.3"
+    "node": "14.17.3"
   },
-  
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.1.2",
@@ -24,7 +23,9 @@
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

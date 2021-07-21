@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="d-flex justify-content-between">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary px-5">Admin</button>
+            <button type="button" class="btn btn-secondary px-5">Projects</button>
+        </div>
+
+        <div ngbDropdown>
+            <button class="btn btn-primary" ngbDropdownToggle id="midrop1">Dropdown</button>
+            <div ngbDropdownMenu aria-labelledby="midrop1">
+                <button ngbDropdownItem>Item 1</button>
+                <button ngbDropdownItem>Item 1</button>
+                <button ngbDropdownItem>Item 1</button>
+            </div>
+        </div>
+
+        <div class="btn-group">
+        <button type="button" class="btn btn-primary">CREATE PROJECT</button>
+        <div ngbDropdown></div>
+            <button 
+                type="button" 
+                class="btn btn-secondary dropdown-toggle"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+                >...</button>
+            <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <li><a href="#" ngbDropdownItem>Option 1</a></li>
+                <li><a href="#" class="dropdown-item" ngbDropdownItem>Option 2</a></li>
+                <li><a href="#" class="dropdown-item" ngbDropdownItem>Option 3</a></li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-secondary">My Name</button>
+    </div>
+</div>
