@@ -4,20 +4,19 @@ import { CreateProjectComponent } from './create-project.component';
 import { CreateProjectRoutingRoutingModule } from './create-project-routing.module';
 import { SharedModule } from 'src/app/components/shared/shared.module';
 
-import { ProjectDescriptionModule } from 'src/app/components/unshared/project-description/project-description.module';
-import { TechsetModule } from 'src/app/components/unshared/techset/techset.module';
+import { ProjectDescriptionComponent } from 'src/app/components/feature-components/project-description/project-description.component';
+import { TechsetComponent } from 'src/app/components/feature-components/techset/techset.component';
 
 @NgModule({
   declarations: [
     CreateProjectComponent,
-  
+    ProjectDescriptionComponent,
+    TechsetComponent
   ],
   imports: [
     CommonModule,
     CreateProjectRoutingRoutingModule,
-    SharedModule,
-    ProjectDescriptionModule,
-    TechsetModule
+    SharedModule
   ]
 })
 export class CreateProjectModule { }
