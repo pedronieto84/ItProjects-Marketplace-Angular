@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ProjectDefinitionComponent } from './project-definition/project-definition.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    ProjectDefinitionComponent,
+    DatePickerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbModule
   ], exports: [
-    NavbarComponent
+    NavbarComponent,
+    ProjectDefinitionComponent,
+    DatePickerComponent
   ]
 })
 export class SharedModule { }
