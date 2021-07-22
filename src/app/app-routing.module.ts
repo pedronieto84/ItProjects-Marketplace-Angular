@@ -5,6 +5,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { CreateProjectComponent } from './pages/create-project/create-project.component';
 import { MyAccountComponent } from './pages/my-account/my-account.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    component: LoginComponent,
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
