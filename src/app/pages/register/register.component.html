@@ -11,11 +11,7 @@
       aria-describedby="emailHelp"
       placeholder="Nom"
     />
-    <p
-      *ngIf="showName"
-      id="emailHelp"
-      class="text-danger"
-    >
+    <p *ngIf="showName" id="nameHelp" class="text-danger">
       El nom ha de tenir entre 2 i 70 caracters
     </p>
   </div>
@@ -30,9 +26,9 @@
       aria-describedby="emailHelp"
       placeholder="Email"
     />
-    <small id="emailHelp" class="form-text text-muted"
-      >We'll never share your email with anyone else.</small
-    >
+    <p *ngIf="showEmail" id="emailHelp" class="text-danger">
+      Ha de ser un email correcte
+    </p>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
@@ -43,18 +39,27 @@
       id="password"
       placeholder="Contrasenya"
     />
+    <p *ngIf="showPassword" id="passwordHelp" class="text-danger">
+      La contrasenya ha de tenir entre 5 y 10 caràcters i al menys un símbol
+    </p>
   </div>
-  <select
-    class="form-select"
-    aria-label="Tipus d'organització"
-    [(ngModel)]="typeOfInstitution"
-  >
-    <option selected>Seleccioni tipus d'organització / empresa</option>
-    <option value="1">Empresa pública</option>
-    <option value="3">Empresa privada</option>
-    <option value="2">3 er sector</option>
-    <option value="4">Altres</option>
-  </select>
+  <div class="form-group">
+    <select
+      class="form-select"
+      aria-label="Tipus d'organització"
+      [(ngModel)]="typeOfInstitution"
+    >
+      <option selected>Seleccioni tipus d'organització / empresa</option>
+      <option value="1">Empresa pública</option>
+      <option value="3">Empresa privada</option>
+      <option value="2">3 er sector</option>
+      <option value="4">Altres</option>
+    </select>
+    <p *ngIf="showTypeOfInstitution" id="typeOfInstHelp" class="text-danger">
+      Ha de seleccionar un tipus d'organització
+    </p>
+  </div>
+
   <a>Login</a>
-  <button (click)="register()">CREAR</button>
+  <button [disabled]="!isAllOk" (click)="register()">CREAR</button>
 </div>
