@@ -9,8 +9,16 @@ import { User } from 'src/app/interfaces/interfaces';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() user: User;
-  
+  usuarioPrueba: User = {
+    id: "12345",
+    name: "Carlos Castillo",
+    email: "prueba@prueba.com",
+    password: "12345",
+    verified: true,
+    publishedProjects: ["", ""],
+    admin: true
+  };
+    
   loggedIn = true;
 
   constructor() { }
