@@ -29,4 +29,17 @@ export class RegisterComponent implements OnInit {
     console.log('register', userObject)
   }
 
+  
+  get showName(){
+    if(this.name !== undefined){
+      if(this.name.length >= 2 && this.name.length <= 70){
+        return false
+      }else{
+        return true
+      }
+    }else{
+      return false
+    }
+  }
+
 }
