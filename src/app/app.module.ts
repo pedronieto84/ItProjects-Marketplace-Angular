@@ -7,10 +7,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from './components/shared/shared.module';
+import { DndDirective } from './components/feature-components/drag-drop/dnd.directive';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DndDirective
   ],
   imports: [
     BrowserModule,
