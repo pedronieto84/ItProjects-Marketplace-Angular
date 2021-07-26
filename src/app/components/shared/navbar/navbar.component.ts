@@ -10,7 +10,7 @@ import { User } from 'src/app/interfaces/interfaces';
 export class NavbarComponent implements OnInit {
 
   usuarioPrueba: User = {
-    id: "12345",
+    userId: "12345",
     name: "Carlos Castillo",
     email: "prueba@prueba.com",
     password: "12345",
