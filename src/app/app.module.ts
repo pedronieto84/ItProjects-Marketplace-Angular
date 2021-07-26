@@ -10,7 +10,6 @@ import { SharedModule } from './components/shared/shared.module';
 import { DndDirective } from './components/feature-components/drag-drop/dnd.directive';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
