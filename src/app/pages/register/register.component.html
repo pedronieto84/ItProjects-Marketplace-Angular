@@ -1,1 +1,47 @@
-<p>register works!</p>
+<div class="container p-3">
+  <h1>ALTA USUARI</h1>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nom</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      aria-describedby="emailHelp"
+      placeholder="Nom"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      aria-describedby="emailHelp"
+      placeholder="Email"
+    />
+    <small id="emailHelp" class="form-text text-muted"
+      >We'll never share your email with anyone else.</small
+    >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Contrasenya"
+    />
+  </div>
+  <select class="form-select" aria-label="Tipus d'organització">
+    <option selected>Seleccioni tipus d'organització / empresa</option>
+    <option value="1">Empresa pública</option>
+    <option value="3">Empresa privada</option>
+    <option value="2">3 er sector</option>
+    <option value="4">Altres</option>
+  </select>
+</div>
