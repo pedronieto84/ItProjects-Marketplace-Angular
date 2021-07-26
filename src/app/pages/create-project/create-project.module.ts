@@ -6,6 +6,8 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
 
 import { ProjectDescriptionComponent } from 'src/app/components/feature-components/project-description/project-description.component';
 import { TechsetComponent } from 'src/app/components/feature-components/techset/techset.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { TechsetComponent } from 'src/app/components/feature-components/techset/
   imports: [
     CommonModule,
     CreateProjectRoutingRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class CreateProjectModule { }

@@ -1,13 +1,25 @@
 
-<div class="input-group mb-4 col-8 mx-auto">
+<div class="input-group my-4 col-8 mx-auto">
     <span class="input-group-text">Add technology needed / desired</span>
-    <input type="text" class="form-control">
-    <span class="input-group-text"><i class="bi bi-plus-circle-fill"></i></span>
+    <input 
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="newLabel" 
+        (keyup.enter)="createTag()"
+    >
+    <button class="input-group-text" (click)="createTag()">
+        <i class="bi bi-plus-circle-fill"></i>
+    </button>
 </div>
 
-<div class="tag-container d-flex border col-10 mx-auto">    
-    <div class="tag d-flex align-items-center p-2">
-        <span class="border shadow-sm p-1">Javascript</span><i class="bi bi-dash-circle-fill mx-1"></i>
+<div class="d-flex border col-10 mx-auto flex-wrap" style="min-height: 50px;">
+    <div 
+        class="d-flex align-items-center p-2" 
+        *ngFor="let tech of techList" 
+        id="{{tech}}"
+    >
+    <span class="border shadow-sm p-1">{{tech}}</span>
+    <i class="bi bi-dash-circle-fill mx-1" (click)="deleteTag($event)"></i>
     </div>
 </div>
 

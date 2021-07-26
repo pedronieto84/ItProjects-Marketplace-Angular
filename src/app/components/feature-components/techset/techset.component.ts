@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-techset',
@@ -6,28 +6,46 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./techset.component.scss']
 })
 export class TechsetComponent implements OnInit {
+  
+  @ViewChild("tagContainer") tagContainer: ElementRef;
 
-  constructor() { }
+  newLabel: string = "";
+  techList: string[] = [];
+
+
+  constructor(private renderer:Renderer2) { }
 
   ngOnInit(): void {
   }
 
-createTag(label: string) {
-    const div = document.createElement("div");
-    div.setAttribute("class", "tag d-flex align-items-center p-2");
+  createTag() {
+    
+    // Check if tech is already in the list or empty
+    if (!this.techList.indexOf(this.newLabel) || this.newLabel !== "") {
+      // Push tech to techList
+      this.techList.push(this.newLabel);
+      console.log(this.techList);
+      
+      // Clear Input field
+      this.newLabel = "";
+    }
+  }
 
-    const span = document.createElement("span");
-    span.setAttribute("class", "border shadow-sm p-1")
-    span.innerHTML = label;
+  deleteTag(e: Event) {
+    
+    let techLabel: HTMLElement = (<HTMLElement>e.target).parentElement;
+    let index:number = this.techList.indexOf(techLabel.id);
 
-    const closeBtn = document.createElement("i");
-    closeBtn.setAttribute("class", "bi bi-dash-circle-fill mx-1");
-
-    div.appendChild(span);
-    div.appendChild(closeBtn);
+    this.techList.splice(index,1);
+    techLabel.remove();
+    console.log(this.techList);
     
   }
 
-  
+  // Comprobar que una tag no está ya en la lista
+  // crear array con lista de tags
+
+
+
 
 }
