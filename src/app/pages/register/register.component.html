@@ -4,6 +4,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Nom</label>
     <input
+      [(ngModel)]="name"
       type="text"
       class="form-control"
       id="name"
@@ -18,6 +19,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input
+      [(ngModel)]="email"
       type="email"
       class="form-control"
       id="email"
@@ -31,17 +33,24 @@
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input
+      [(ngModel)]="password"
       type="password"
       class="form-control"
       id="password"
       placeholder="Contrasenya"
     />
   </div>
-  <select class="form-select" aria-label="Tipus d'organització">
+  <select
+    class="form-select"
+    aria-label="Tipus d'organització"
+    [(ngModel)]="typeOfInstitution"
+  >
     <option selected>Seleccioni tipus d'organització / empresa</option>
     <option value="1">Empresa pública</option>
     <option value="3">Empresa privada</option>
     <option value="2">3 er sector</option>
     <option value="4">Altres</option>
   </select>
+  <a>Login</a>
+  <button (click)="register()">CREAR</button>
 </div>
