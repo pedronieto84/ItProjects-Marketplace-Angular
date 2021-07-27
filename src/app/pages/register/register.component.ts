@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  
   register(){
     const userObject: User = {
       email: this.email,
