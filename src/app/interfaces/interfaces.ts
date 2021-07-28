@@ -21,7 +21,7 @@ export interface Project {
     techSet: string[] // refers to the TechObject Id's
     filesArray: string[] // will be the url of the files
     explanation: string
-    steate: ProjectState
+    steate: ProjectState // <----- CANVIAR STEATE PER STATE ? ------------
 }
 
 export interface TechObject {

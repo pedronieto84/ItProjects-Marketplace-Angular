@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-project-description',
@@ -6,6 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-description.component.scss']
 })
 export class ProjectDescriptionComponent implements OnInit {
+
+  @Output() sendProjectDescription = new EventEmitter<object>();
+
+  addProjectDescription(newProjectDescription: object) {
+    this.sendProjectDescription.emit(newProjectDescription);
+    console.log(newProjectDescription);
+  }
+
+  newProjectDescription = {
+    title: '',
+    description: ''
+  }
 
   constructor() { }
 

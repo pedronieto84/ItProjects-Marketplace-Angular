@@ -7,7 +7,10 @@
             <li [ngbNavItem]="1">
                 <a ngbNavLink>1</a>
                 <ng-template ngbNavContent>
-                    <app-project-description></app-project-description>
+                    <app-project-description 
+                        (sendProjectDescription)="setNewProjectDescription($event)">
+                    </app-project-description>
+                    <p>Titulo {{newProject.title}} <br> Descripción {{newProject.explanation}}</p>
                 </ng-template>
             </li>
             <li [ngbNavItem]="2">
@@ -39,6 +42,20 @@
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
         <div class="d-flex justify-content-between p-2">
+            
+            <!-- Eliminar botón tras comprobar que objeto global funciona correctamente -->
+            <button 
+                class="btn btn-danger"
+                (click) = "imprimirObjetoGlobal()"
+                >
+                objeto proyecto global
+            </button>
+            <i 
+                (click)="moveTab('next')"
+                *ngIf="active==1"
+                class="bi bi-arrow-right ml-auto" 
+                style="font-size: 2rem;">
+            </i>
             <i 
                 (click)="moveTab('prev')"
                 *ngIf="active==2 || active==3"
@@ -47,7 +64,7 @@
             </i>
             <i 
                 (click)="moveTab('next')"
-                *ngIf="active==1 || active==2"
+                *ngIf="active==2"
                 class="bi bi-arrow-right ml-auto" 
                 style="font-size: 2rem;">
             </i>

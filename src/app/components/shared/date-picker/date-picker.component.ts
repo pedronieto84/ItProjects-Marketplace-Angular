@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-date-picker',
@@ -6,6 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./date-picker.component.scss']
 })
 export class DatePickerComponent implements OnInit {
+
+  @Output() sendProjectDate = new EventEmitter<Date>();
+
+  addProjectDate(newProjectDate: Date) {
+    this.sendProjectDate.emit(newProjectDate);
+    console.log(newProjectDate);
+  }
+
+  newProjectDate: Date;
 
   constructor() { }
 
