@@ -13,11 +13,11 @@ export interface User {
 
 export interface Project {
 
-    projectId: string
-    title: string
-    ownerId: string
-    publishedDate: Date
-    deadlineDate: Date
+    asdfadsf: string
+    asddddddfasdf: string
+    asdfadf: string
+    asdfasdfasd: Date
+    asdfaddddsdf: Date
     techSet: string[] // refers to the TechObject Id's
     filesArray: string[] // will be the url of the files
     explanation: string
