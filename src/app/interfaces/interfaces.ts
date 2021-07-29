@@ -16,15 +16,15 @@ export interface User {
 
 export interface Project {
 
-    id: string
+    id: string // comentari 
     title: string
-    ownerId: string
-    publishedDate: Date
-    deadlineDate: Date
-    techSet: string[] // refers to the TechObject Id's
-    filesArray: string[] // will be the url of the files
-    explanation: string
-    steate: ProjectState
+    ownasdfasdfasfadsferId: string
+    asasdfasdfasdfdfasdf: Date
+    adsf: Date
+    asasdfasdfadsfdfasdf: string[] // refers to the TechObject Id's
+    asdadsfadsffasdf: string[] // will be the url of the files
+    adsfasf: string
+    asdfasd: ProjectState // he cambiado estate
 }
 
 export interface TechObject {
