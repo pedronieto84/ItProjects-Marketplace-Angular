@@ -8,14 +8,16 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class DatePickerComponent implements OnInit {
 
   @Output() sendProjectDate = new EventEmitter<Date>();
-
+  
+  newProjectDate: Date;
+  
   addProjectDate(newProjectDate: Date) {
     this.sendProjectDate.emit(newProjectDate);
-    console.log(newProjectDate);
   }
 
-  newProjectDate: Date;
-
+  verDia(newProjectDate: Date) {
+    console.log(newProjectDate);
+  }
   constructor() { }
 
   ngOnInit(): void {

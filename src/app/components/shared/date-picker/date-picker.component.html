@@ -1,9 +1,10 @@
 
 <input type="text" 
     ngbDatepicker 
-    #d="ngbDatepicker" 
-    [(value)]="newProjectDate"
-    (onchange)="newProjectDate=$event.target.value">
+    #d="ngbDatepicker"
+    [(ngModel)]="newProjectDate"
+    (dateSelect)="addProjectDate($event.value)">
 <button (click)="d.toggle()">
     <i class="bi bi-calendar-event"></i>
 </button>
+<button (click)="verDia(newProjectDate)">Ver dia elegido</button>

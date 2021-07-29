@@ -19,16 +19,32 @@
                     <div class="col-10 mx-auto d-flex justify-content-between">
                         <div>
                             <p class="mb-0">Published</p>
-                            <app-date-picker></app-date-picker>
+                            <app-date-picker 
+                                (newProject.publishedDate)="setNewProjectPublishedDate($event)">
+                            </app-date-picker>
                         </div>
                         <div>
                             <p class="mb-0">Deadline</p>
-                            <app-date-picker></app-date-picker>
+                            <app-date-picker
+                                (newProject.deadlineDate)="setNewProjectDeadlineDate($event)">
+                            </app-date-picker>
                         </div>
-                        <button class="btn btn-primary">Bid in Euros</button>
+                        <div>
+                            <div class="input-group mt-3">
+                                <input 
+                                    type="number" 
+                                    class="form-control"
+                                    [(value)]="projectBid"
+                                    (keyup)="projectBid=$event.target.value">
+                                <span 
+                                    class="input-group-text">
+                                    Bid in Euros
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <app-techset></app-techset>
+                    <app-techset (sendTechSet)="setNewTechSet($event)"></app-techset>
                 </ng-template>
             </li>
             <li [ngbNavItem]="3">

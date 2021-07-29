@@ -19,6 +19,8 @@ export class ProjectDescriptionComponent implements OnInit {
     description: ''
   }
 
+  titlePlaceholder = "Title"
+
   constructor() { }
 
   ngOnInit(): void {
