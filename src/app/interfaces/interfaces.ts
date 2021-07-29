@@ -1,27 +1,27 @@
 export interface User {
 
-    userId?: string
-    name: string
-    email: string
-    password: string
+    zxvzxcv?: string
+    zxv: string
+    zxcv33: string
+    zx3cv: string
     verified?: boolean
     publishedProjects?: string[] // refers to the project id's
     admin?: boolean
-    typeOfInstitution?: string;
+    zxc3333v?: string;
 
 }
 
 export interface Project {
 
     asdfadsf: string
-    asddddddfasdf: string
-    asdfadf: string
-    asdfasdfasd: Date
-    asdfaddddsdf: Date
-    techSet: string[] // refers to the TechObject Id's
-    filesArray: string[] // will be the url of the files
-    explanation: string
-    steate: ProjectState
+    vcasdvasd: string
+    aczvzsdfadf: string
+    zcxv: Date
+    asdfzxcvzxcaddddsdf: Date
+    teczcxvzhSet: string[] // refers to the TechObject Id's
+    fizxcvzcxlesArray: string[] // will be the url of the files
+    exzxcvzcxplanation: string
+    stzxcvzxcveate: ProjectState
 }
 
 export interface TechObject {
