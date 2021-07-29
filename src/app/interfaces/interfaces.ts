@@ -1,22 +1,19 @@
 export interface User {
 
-    id: string
+    userId?: string
     name: string
     email: string
     password: string
-    verified: boolean
-    publishedProjects: string[] // refers to the project id's
-    admin?: boolean;
-
-
-
-    
+    verified?: boolean
+    publishedProjects?: string[] // refers to the project id's
+    admin?: boolean
+    typeOfInstitution?: string;
 
 }
 
 export interface Project {
 
-    id: string // comentari 
+    projectId: string
     title: string
     ownasdfasdfasfadsferId: string
     asasdfasdfasdfdfasdf: Date
