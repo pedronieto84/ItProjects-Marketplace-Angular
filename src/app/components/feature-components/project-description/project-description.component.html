@@ -1,24 +1,32 @@
 
 <div class="form-group mt-5 col-10 mx-auto">
-    <div class="input-group mb-4">
+    <div class="input-group mb-4" >
         <div class="input-group-prepend">
-            <span class="input-group-text">Project Title</span>
+            <span 
+                class="input-group-text"
+                
+                >Project Title</span>
         </div>
         <input 
             type="text" 
             class="form-control" 
             [(value)]="newProjectDescription.title"
-            (keyup)="newProjectDescription.title=$event.target.value">
+            (keyup)="newProjectDescription.title=$event.target.value"
+            placeholder="{{newProjectDescription.title}}">
     </div>
     
     <textarea 
-        placeholder="Project Description, 500 characters" 
-        class="col-12" 
-        rows="5"
-        [(value)]="newProjectDescription.description"
-        (keyup)="newProjectDescription.description=$event.target.value"
+    class="col-12" 
+    rows="5"
+    [(value)]="newProjectDescription.description"
+    (keyup)="newProjectDescription.description=$event.target.value"
+    placeholder="{{newProjectDescription.description 
+                    ? newProjectDescription.description 
+                    : 'Project Description, 500 characters'}}" 
     ></textarea>
 
     <!-- Eliminar botón tras comprobar que el objeto global funciona -->
-    <button class="btn btn-primary" (click)="addProjectDescription(newProjectDescription)">Prueba enviar</button>
+    <button 
+        class="btn btn-primary" 
+        (click)="addProjectDescription(newProjectDescription)">Prueba enviar</button>
 </div>

@@ -5,9 +5,9 @@
         type="text" 
         class="form-control" 
         [(ngModel)]="newLabel" 
-        (keyup.enter)="createTag()"
+        (keyup.enter)="[createTag(), addTechSet(techList)]"
     >
-    <button class="input-group-text" (click)="createTag()">
+    <button class="input-group-text" (click)="[createTag(), addTechSet(techList)]">
         <i class="bi bi-plus-circle-fill"></i>
     </button>
 </div>
@@ -19,7 +19,7 @@
         id="{{tech}}"
     >
     <span class="border shadow-sm p-1">{{tech}}</span>
-    <i class="bi bi-dash-circle-fill mx-1" (click)="deleteTag($event)"></i>
+    <i class="bi bi-dash-circle-fill mx-1" (click)="[deleteTag($event), addTechSet(techList)]"></i>
     </div>
 </div>
 
