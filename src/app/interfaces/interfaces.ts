@@ -1,9 +1,9 @@
 export interface User {
 
-    userId?: string
-    name: string
-    email: string
-    password: string
+    asdfasdgfds333userId?: string
+    fsdgfsdgsdfgfsd999: string
+    fghjfghjfg999: string
+    fghjfghjfgj9999: string
     verified?: boolean
     publishedProjects?: string[] // refers to the project id's
     admin?: boolean
