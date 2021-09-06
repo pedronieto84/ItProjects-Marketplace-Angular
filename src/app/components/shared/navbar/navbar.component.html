@@ -6,25 +6,34 @@
             class="btn btn-primary px-5" 
             [routerLink]="['admin']"
             *ngIf="loggedIn"
-            >Admin
-        </button>
-        <button type="button" class="btn btn-secondary px-5" [routerLink]="['projects']">Projects</button>
+        >Admin</button>
+        <button 
+            type="button" 
+            class="btn btn-secondary px-5" 
+            [routerLink]="['projects']"
+        >Projects</button>
     </div>
 
     <div ngbDropdown>
         <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary" [routerLink]="['crear-projecte']">CREATE PROJECT</button>
-                <button 
-                    type="button" 
-                    class="btn btn-secondary dropdown-toggle"
-                    id="dropdownBasic1"
-                    ngbDropdownToggle
-                    >...</button>
-                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <li><a ngbDropdownItem>Option 1</a></li>
-                    <li><a class="dropdown-item" ngbDropdownItem>Option 2</a></li>
-                    <li><a class="dropdown-item" ngbDropdownItem>Option 3</a></li>
-                </ul>
+            <button 
+                type="button" 
+                class="btn btn-primary" 
+                [routerLink]="['crear-projecte']"
+            >CREATE PROJECT</button>
+            <button 
+                type="button" 
+                class="btn btn-secondary dropdown-toggle"
+                id="dropdownBasic1"
+                ngbDropdownToggle
+                >...</button>
+            <ul 
+                class="dropdown-menu" 
+                ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <li><a ngbDropdownItem>Option 1</a></li>
+                <li><a class="dropdown-item" ngbDropdownItem>Option 2</a></li>
+                <li><a class="dropdown-item" ngbDropdownItem>Option 3</a></li>
+            </ul>
         </div>
     </div>
 
@@ -41,6 +50,5 @@
         class="btn btn-secondary" 
         [routerLink]="['login']"
         *ngIf="!loggedIn"
-        >Log In
-    </button>
+        >Log In</button>
 </div>
