@@ -10,7 +10,7 @@
                     <app-project-description 
                         (sendProjectDescription)="setNewProjectDescription($event)">
                     </app-project-description>
-                    <p>Titulo {{newProject.title}} <br> Descripción {{newProject.explanation}}</p>
+                    <p>Titulo {{newProject.title}} <br> Descripción {{newProject.shortExplanation}}</p>
                 </ng-template>
             </li>
             <li [ngbNavItem]="2">
@@ -20,13 +20,13 @@
                         <div>
                             <p class="mb-0">Published</p>
                             <app-date-picker 
-                                (newProject.publishedDate)="setNewProjectPublishedDate($event)">
+                                (sendProjectDate)="setNewProjectPublishedDate($event)">
                             </app-date-picker>
                         </div>
                         <div>
                             <p class="mb-0">Deadline</p>
                             <app-date-picker
-                                (newProject.deadlineDate)="setNewProjectDeadlineDate($event)">
+                                (sendProjectDate)="setNewProjectDeadlineDate($event)">
                             </app-date-picker>
                         </div>
                         <div>
@@ -35,7 +35,7 @@
                                     type="number" 
                                     class="form-control"
                                     [(value)]="projectBid"
-                                    (keyup)="projectBid=$event.target.value">
+                                    (keyup)="newProject.bid=$event.target.value">
                                 <span 
                                     class="input-group-text">
                                     Bid in Euros

@@ -23,15 +23,16 @@ export class CreateProjectComponent implements OnInit {
   }
 
   newProject: Project = {
-    projectId : '',
+    projectId: '',
     title : 'Prueba',
+    shortExplanation : 'prueba prueba prueba',
     ownerId : '',
-    publishedDate : new Date(),
+    publishedDate : new Date(2015, 7, 12),
     deadlineDate : new Date(),
     techSet : [],
     filesArray : [],
-    explanation : 'prueba prueba prueba',
-    steate : {
+    bid: 0,
+    state : {
       id : '',
       name : ''
     }
@@ -41,16 +42,16 @@ export class CreateProjectComponent implements OnInit {
 
   setNewProjectDescription(description: any){
     this.newProject.title = description.title;
-    this.newProject.explanation = description.description;
+    this.newProject.shortExplanation = description.description;
     console.log("objeto global es "+this.newProject);
   }
 
-  setNewProjectPublishedDate(sendProjectDate: Date, ) {
+  setNewProjectPublishedDate(sendProjectDate: Date ) {
     this.newProject.publishedDate = sendProjectDate;
-    console.log("set date");
+    console.log("set date", this.newProject.publishedDate);
   }
 
-  setNewProjectDeadlineDate(sendProjectDate: Date, ) {
+  setNewProjectDeadlineDate(sendProjectDate: Date ) {
     this.newProject.deadlineDate = sendProjectDate;
   }
   
