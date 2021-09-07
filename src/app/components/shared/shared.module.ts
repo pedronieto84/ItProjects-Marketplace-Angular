@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
+
 import { ProjectCardComponent } from './project-card/project-card.component';
 
 @NgModule({
@@ -17,9 +18,11 @@ import { ProjectCardComponent } from './project-card/project-card.component';
     CommonModule,
     NgbModule,
     RouterModule
-  ], exports: [
+  ], 
+  exports: [
     NavbarComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    ProjectCardComponent
   ]
 })
 export class SharedModule { }
