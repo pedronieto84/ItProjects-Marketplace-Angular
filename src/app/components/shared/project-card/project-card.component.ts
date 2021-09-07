@@ -10,6 +10,11 @@ export class ProjectCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    //obtengo el id del proyecto 
+    //get
+
+    //voy cargando cada uno de los campos
   }
 
 }
