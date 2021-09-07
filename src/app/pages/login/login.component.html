@@ -1,6 +1,6 @@
 <form
-    formGroup ="loginForm"
-    (ngSubmit)="onLogin(loginForm)">
+    [formGroup] ="loginForm"
+    (ngSubmit)="onLogin()">
     <h1 class="loginTitle--style">Login</h1>
     <div class="form-group">
       <input 
@@ -8,8 +8,12 @@
         class="form-control" 
         name="email" 
         placeholder="Enter email"
-        formControl="email"
+        formControlName="email"
         >
+        <div>
+          <span class="msgError--style" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+          Please, enter a valid Email</span>
+        </div>
     </div>
     <div class="form-group">
       <input 
@@ -17,9 +21,13 @@
         class="form-control" 
         name="password" 
         placeholder="Password"
-        formControl="password"
+        formControlName="password"
         >
+        <div>
+          <span class="msgError--style" *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+          Please, enter a valid password</span>
+        </div>
     </div>
     <a href="#">Create accout</a>
-    <button type="button" class="btn btn-primary" [disabled]="!loginForm.invalid">Enter</button>
+    <button type="submit"  [disabled]="loginForm.invalid" class="btn btn-primary">Enter</button>
   </form>
