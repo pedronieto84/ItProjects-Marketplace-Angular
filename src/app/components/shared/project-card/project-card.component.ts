@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -7,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectCardComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor( ) { }
 
   ngOnInit(): void {
 
-    //obtengo el id del proyecto 
-    //get
-
-    //voy cargando cada uno de los campos
+   
+    
   }
 
 }

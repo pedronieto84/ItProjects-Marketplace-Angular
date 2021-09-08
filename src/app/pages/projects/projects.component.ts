@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+//servicios
+import { UserProjectsService } from 'src/app/services/user-projects.service';
+
+//interface
+import { Project } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-projects',
@@ -8,17 +13,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+   projects: [Project];
+   //projects: any;
+
+  //Injectamos el servicio user-projects
+  constructor(public UserProjectsService: UserProjectsService) { }
 
   ngOnInit() {
-      //se me pasa el id del usuario
-      //let userId = ?? .get('')
-      
-      //obtengo el array de los proyectos de ese usuario ( project[] )
-      //getProjects()      
-      //https://us-central1-asamblea-27a8d.cloudfunctions.net/getProjects?userId=cLAYAmIqsob2Ekqos7L
-  
-      //recorro array y obtengo los id del proyecto, uno a uno y envío a project-card-component y voy mostrando
-    }
 
+  let usrProjectsId: [string];
+
+    this.UserProjectsService.getProjectsId().subscribe( 
+      data => { 
+        //console.log(data);
+        this.projects = data;
+        
+        //almaceno todos los id de proyecto de ese usuario
+        /*this.projects.forEach(function (value){
+            console.log("id de proyecto: " + value.projectId);
+          usrProjectsId.push(value.projectId);
+        })*/
+
+
+
+      },
+      err => {
+        console.log("Error");
+      }
+    );
+
+
+      
+    
+
+    
+
+  }
+
+        
 }
