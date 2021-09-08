@@ -1,3 +1,7 @@
+<div  class="spinner" *ngIf="true">
+  <app-spinner></app-spinner>
+</div>
+<div *ngIf="false">
 <form
     [formGroup] ="loginForm"
     (ngSubmit)="onLogin()">
@@ -31,3 +35,4 @@
     <a href="#">Create accout</a>
     <button type="submit"  [disabled]="loginForm.invalid" class="btn btn-primary">Enter</button>
   </form>
+</div>

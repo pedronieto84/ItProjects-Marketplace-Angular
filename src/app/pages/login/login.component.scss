@@ -1,3 +1,14 @@
+
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
 .msgError--style {
     color: red;
+}
+
+:host{
+    display: flex;
+    justify-content: center;
+    margin: 100px 0;
 }
