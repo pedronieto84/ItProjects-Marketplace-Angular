@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/interfaces/interfaces';
+import { UsersService } from '../../../services/users.service';
 
 
 @Component({
@@ -9,22 +10,19 @@ import { User } from 'src/app/interfaces/interfaces';
 })
 export class NavbarComponent implements OnInit {
 
-  usuarioPrueba: User = {
-    userId: "12345",
-    name: "Carlos Castillo",
-    email: "prueba@prueba.com",
-    password: "12345",
-    verified: true,
-    publishedProjects: ["", ""],
-    admin: true
-  };
-    
-  loggedIn = true;
+  
+  constructor( private UsersService: UsersService ) { }
 
-  constructor() { }
+  currentUser: any;
 
   ngOnInit(): void {
-    //Consulta
+    this.UsersService.getUser().subscribe( resp => {
+      this.currentUser = resp;
+      console.log( this.currentUser );
+    });
   }
 
+  ngOnDestroy(): void {
+    this.currentUser.unsubscribe();
+  }
 }

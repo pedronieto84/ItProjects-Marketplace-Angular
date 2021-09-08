@@ -5,7 +5,7 @@
             type="button" 
             class="btn btn-primary px-5" 
             [routerLink]="['admin']"
-            *ngIf="loggedIn"
+            *ngIf="this.currentUser?.admin"
         >Admin</button>
         <button 
             type="button" 
@@ -36,19 +36,33 @@
             </ul>
         </div>
     </div>
+    <div class="btn-group">
+    
+        <button 
+            type="button" 
+            class="btn btn-primary" 
+            [routerLink]="['el-meu-compte']"
+            *ngIf="this.currentUser"
+            >{{this.currentUser?.name}}
+        </button>
 
-    <button 
-        type="button" 
-        class="btn btn-secondary" 
-        [routerLink]="['el-meu-compte']"
-        *ngIf="loggedIn"
-        >{{usuarioPrueba.name}}
-    </button>
-
-    <button 
-        type="button" 
-        class="btn btn-secondary" 
-        [routerLink]="['login']"
-        *ngIf="!loggedIn"
-        >Log In</button>
+        <button 
+            type="button" 
+            class="btn btn-secondary" 
+            [routerLink]="['login']"
+            *ngIf="this.currentUser ; else logIn"
+            >Log Off
+        </button>
+        
+        <!--Aquí ver a donde dirijimos el routerLink-->
+        <ng-template #logIn>
+            <button 
+                type="button" 
+                class="btn btn-secondary" 
+                [routerLink]="['login']"
+                >Log In
+            </button>
+        </ng-template>
+    </div>
+    
 </div>

@@ -10,23 +10,17 @@
         <input 
             type="text" 
             class="form-control" 
-            [(value)]="newProjectDescription.title"
-            (keyup)="newProjectDescription.title=$event.target.value"
-            placeholder="{{newProjectDescription.title}}">
+            (keyup)="changeProjectProperty('title', $event.target.value)"
+            placeholder="{{newProject.title}}">
     </div>
     
     <textarea 
     class="col-12" 
     rows="5"
-    [(value)]="newProjectDescription.description"
-    (keyup)="newProjectDescription.description=$event.target.value"
-    placeholder="{{newProjectDescription.description 
-                    ? newProjectDescription.description 
+    (keyup)="changeProjectProperty('shortExplanation', $event.target.value)"
+    placeholder="{{newProject.shortExplanation 
+                    ? newProject.shortExplanation 
                     : 'Project Description, 500 characters'}}" 
     ></textarea>
 
-    <!-- Eliminar botón tras comprobar que el objeto global funciona -->
-    <button 
-        class="btn btn-primary" 
-        (click)="addProjectDescription(newProjectDescription)">Prueba enviar</button>
 </div>
