@@ -9,5 +9,5 @@ export class AppComponent {
   title = 'itProjects-Marketplace-Angular';
 
   // comentario de las 16:45
-  comentario = 'comentario de las 17:21 A'
+  comentario = 'comentario de las 17:20 A'
 }
