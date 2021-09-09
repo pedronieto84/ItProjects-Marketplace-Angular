@@ -11,5 +11,5 @@ export class AppComponent {
   // comentario de las 16:45
 
 
-  comentario = 'comentario de las 17:06 b'
+  comentario = 'comentario de las 17:11 b'
 }
