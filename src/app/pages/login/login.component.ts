@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(  private formbuider: FormBuilder,
                 public loginService: LoginService, 
                 private router: Router) { }
-
+                
+  /* Método para el login del usuari*/
   onLogin() {
     if(this.loginForm.invalid) {
       return;
