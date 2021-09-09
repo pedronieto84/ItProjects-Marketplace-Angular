@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
-import { loginUser } from '../../interfaces/interfaces'
 
 @Component({
   selector: 'app-login',
@@ -18,29 +17,29 @@ export class LoginComponent implements OnInit {
 
   //declaramos variables
   loginForm: FormGroup;
-  isLoading = true;
+  isLoading = false;
   messageError: string = null;
+
 
   constructor(  private formbuider: FormBuilder,
                 public loginService: LoginService, 
                 private router: Router) { }
 
-  async onLogin() {
-
+  onLogin() {
     if(this.loginForm.invalid) {
       return;
     }
     const loginUser = this.loginForm.value;
-    try {
+      this.isLoading = false;
+      this.loginService.onLogin(loginUser)
+      .then(res => {
+        // Guardo el objeto como un string en el navegador
+        localStorage.setItem('usuario', JSON.stringify(res));
 
-      await this.loginService.onLogin(loginUser);
-
+        /*Faltan definir las rutas*/
+        //this.router.navigate(['/'])
+      }).catch(err => {this.messageError = err.error.error;});
       this.isLoading = true;
-      
-    } catch (error) {
-      console.log(error);
-    }
-    
   }
 
  
@@ -55,5 +54,3 @@ export class LoginComponent implements OnInit {
     });
   }
 }
-
-

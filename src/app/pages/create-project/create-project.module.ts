@@ -7,19 +7,25 @@ import { SharedModule } from 'src/app/components/shared/shared.module';
 import { ProjectDescriptionComponent } from 'src/app/components/feature-components/project-description/project-description.component';
 import { TechsetComponent } from 'src/app/components/feature-components/techset/techset.component';
 import { FormsModule } from '@angular/forms';
+import { DragDropComponent } from 'src/app/components/feature-components/drag-drop/drag-drop.component';
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     CreateProjectComponent,
     ProjectDescriptionComponent,
-    TechsetComponent
+    TechsetComponent,
+    DragDropComponent
   ],
   imports: [
     CommonModule,
     CreateProjectRoutingRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    AngularFileUploaderModule,
+    NgbModule
   ]
 })
 export class CreateProjectModule { }
