@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'itProjects-Marketplace-Angular';
+
+  // comentario de las 16:45
+  coment = 'comentario de las 16:45'
 }
