@@ -20,7 +20,7 @@ export class NewProjectService {
       id : '',
       name : ''
     }
-    }
+  }
 
   private newProjectSource = new BehaviorSubject<Object>({});
 

@@ -11,16 +11,15 @@
             type="text" 
             class="form-control" 
             (keyup)="changeProjectProperty('title', $event.target.value)"
-            placeholder="{{newProject.title}}">
+            value="{{newProject.title}}">
     </div>
     
     <textarea 
-    class="col-12" 
-    rows="5"
-    (keyup)="changeProjectProperty('shortExplanation', $event.target.value)"
-    placeholder="{{newProject.shortExplanation 
-                    ? newProject.shortExplanation 
-                    : 'Project Description, 500 characters'}}" 
+        class="col-12" 
+        rows="5"
+        (keyup)="changeProjectProperty('shortExplanation', $event.target.value)"
+        value="{{newProject.shortExplanation ? newProject.shortExplanation :''}}"
+        placeholder="Project Description, 500 characters" 
     ></textarea>
 
 </div>

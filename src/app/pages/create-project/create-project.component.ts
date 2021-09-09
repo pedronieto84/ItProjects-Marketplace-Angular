@@ -22,6 +22,7 @@ export class CreateProjectComponent implements OnInit {
     }
   }
 
+  // BORRAR AL FINAL
   newProject: Project = {
     projectId: '',
     title : 'Prueba',
@@ -46,8 +47,9 @@ export class CreateProjectComponent implements OnInit {
     console.log("objeto global es "+this.newProject);
   }
 
-  setNewProjectPublishedDate(sendProjectDate: Date ) {
-    this.newProject.publishedDate = sendProjectDate;
+  setNewProjectPublishedDate(publishedDate: Date ) {
+    this.newProject.publishedDate = publishedDate;
+    // this.newProject.publishedDate = sendProjectDate;
     console.log("set date", this.newProject.publishedDate);
   }
 
@@ -59,11 +61,6 @@ export class CreateProjectComponent implements OnInit {
     this.newProject.techSet = techList;
     console.log("techList = ", techList);
     console.log("Techset = ", this.newProject.techSet);
-  }
-
-  // Eliminar función tras comprobar que el objeto global funciona
-  imprimirObjetoGlobal() {
-    console.log("objeto proyecto es ", this.newProject);
   }
 
   constructor() { }

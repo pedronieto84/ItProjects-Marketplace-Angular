@@ -3,8 +3,8 @@
     ngbDatepicker 
     #d="ngbDatepicker"
     [(ngModel)]="newProjectDate"
-    (dateSelect)="addProjectDate($event)">
+    (dateSelect)="addProjectDate($event)"
+    value="newProjectDate">
 <button (click)="d.toggle()">
     <i class="bi bi-calendar-event"></i>
 </button>
-<button (click)="verDia(newProjectDate)">Ver dia elegido</button>

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/interfaces';
-import { UsersService } from '../../../services/users.service';
+import { ApiService } from '../../../services/api.service';
 
 
 @Component({
@@ -11,16 +10,16 @@ import { UsersService } from '../../../services/users.service';
 export class NavbarComponent implements OnInit {
 
   
-  constructor( private UsersService: UsersService ) { }
+  constructor( private ApiService: ApiService ) { }
 
   currentUser: any;
 
   ngOnInit(): void {
-    this.UsersService.getUser().subscribe( resp => {
+    this.ApiService.getUser('WUnYiEbXKkLhG2FptA1p').subscribe( resp => {
       this.currentUser = resp;
       console.log( this.currentUser );
     });
-  }
+ }
 
   ngOnDestroy(): void {
     this.currentUser.unsubscribe();

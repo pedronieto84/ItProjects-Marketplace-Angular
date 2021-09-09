@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { NewProjectService } from '../../../services/new-project.service';
 
 @Component({
@@ -8,28 +9,20 @@ import { NewProjectService } from '../../../services/new-project.service';
 })
 export class ProjectDescriptionComponent implements OnInit {
 
-  /*
-  @Output() sendProjectDescription = new EventEmitter<object>();
-
-  addProjectDescription(newProjectDescription: object) {
-    this.sendProjectDescription.emit(newProjectDescription);
-    console.log(newProjectDescription);
-  }
-  */
-
   newProject:any;
+  subscription: Subscription;
 
   constructor(private data: NewProjectService) { }
 
   ngOnInit(): void {
-    this.data.currentProject$.subscribe(newProject => this.newProject = newProject);
+    this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject = newProject);
   }
 
   ngOnDestroy(): void {
-    this.newProject.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
-  changeProjectProperty(property, newValue) {
+  changeProjectProperty(property: string, newValue: any) {
     this.data.changeProjectProperty(property, newValue);
   }
 
