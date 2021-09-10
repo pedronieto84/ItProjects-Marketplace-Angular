@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 
 //servicios
 import { UserProjectsService } from 'src/app/services/user-projects.service';
@@ -13,40 +13,23 @@ import { Project } from '../../interfaces/interfaces';
 })
 export class ProjectsComponent implements OnInit {
 
-   projects: [Project];
-   //projects: any;
+   projects: Project [];
+
 
   //Injectamos el servicio user-projects
   constructor(public UserProjectsService: UserProjectsService) { }
-
+  
   ngOnInit() {
-
-  let usrProjectsId: [string];
-
+    
     this.UserProjectsService.getProjectsId().subscribe( 
       data => { 
         //console.log(data);
         this.projects = data;
-        
-        //almaceno todos los id de proyecto de ese usuario
-        /*this.projects.forEach(function (value){
-            console.log("id de proyecto: " + value.projectId);
-          usrProjectsId.push(value.projectId);
-        })*/
-
-
-
       },
       err => {
         console.log("Error");
       }
     );
-
-
-      
-    
-
-    
 
   }
 
