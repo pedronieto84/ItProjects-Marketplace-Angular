@@ -11,18 +11,21 @@ export interface User {
 
 }
 
+
+
+
 export interface Project {
 
     projectId: string
     title: string
     ownerId: string
-    publishedDate: Date
-    deadline: Date
+    publishedDate: Date | number
+    deadlineDate: Date | number
     techSet: string[] // refers to the TechObject Id's
     filesArray: string[] // will be the url of the files
+    bid: number;
     shortExplanation: string
-    state: ProjectState // he cambiado estate
-    bid: number
+    state: ProjectState
 }
 
 export interface TechObject {

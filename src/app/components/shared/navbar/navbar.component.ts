@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/interfaces/interfaces';
+import { ApiService } from '../../../services/api.service';
 
 
 @Component({
@@ -9,22 +9,19 @@ import { User } from 'src/app/interfaces/interfaces';
 })
 export class NavbarComponent implements OnInit {
 
-  usuarioPrueba: User = {
-    userId: "12345",
-    name: "Carlos Castillo",
-    email: "prueba@prueba.com",
-    password: "12345",
-    verified: true,
-    publishedProjects: ["", ""],
-    admin: true
-  };
-    
-  loggedIn = true;
+  
+  constructor( private ApiService: ApiService ) { }
 
-  constructor() { }
+  currentUser: any;
 
   ngOnInit(): void {
-  
-  }
+    this.ApiService.getUser('WUnYiEbXKkLhG2FptA1p').subscribe( resp => {
+      this.currentUser = resp;
+      console.log( this.currentUser );
+    });
+ }
 
+  ngOnDestroy(): void {
+    this.currentUser.unsubscribe();
+  }
 }

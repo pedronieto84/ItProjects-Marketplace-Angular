@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-techset',
@@ -9,9 +9,15 @@ export class TechsetComponent implements OnInit {
   
   @ViewChild("tagContainer") tagContainer: ElementRef;
 
+  @Output() sendTechSet = new EventEmitter<object>();
+
   newLabel: string = "";
   techList: string[] = [];
 
+  addTechSet(techList: object) {
+    this.sendTechSet.emit(techList);
+    console.log("addTechSet ",techList);
+  }
 
   constructor(private renderer:Renderer2) { }
 
@@ -24,7 +30,6 @@ export class TechsetComponent implements OnInit {
     if (!this.techList.indexOf(this.newLabel) || this.newLabel !== "") {
       // Push tech to techList
       this.techList.push(this.newLabel);
-      console.log(this.techList);
       
       // Clear Input field
       this.newLabel = "";
