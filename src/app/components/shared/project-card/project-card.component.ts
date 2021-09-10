@@ -14,7 +14,6 @@ export class ProjectCardComponent implements OnInit {
   //variable que viene desde project-component y contiene el objeto proyecto
   @Input() project: Project;
 
-
   ngOnInit(): void {
     
   }
