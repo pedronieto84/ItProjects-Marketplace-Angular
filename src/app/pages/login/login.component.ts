@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('usuario', JSON.stringify(res));
 
         /*Faltan definir las rutas*/
-        //this.router.navigate(['/'])
+        this.router.navigate(['/admin'])
       }).catch(err => {this.messageError = err.error.error;});
       this.isLoading = true;
   }
@@ -50,8 +50,9 @@ export class LoginComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [ Validators.required,
                                         Validators.minLength(6),                                
-                                        Validators.maxLength(10)
-                                        ])
+                                        Validators.maxLength(10),
+                                        Validators.pattern(
+                                          /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/)])
     });
   }
 }
