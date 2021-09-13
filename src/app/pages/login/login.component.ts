@@ -3,6 +3,7 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/interfaces';
 import { LoginService } from '../../services/login.service';
 
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading = false;
   messageError: string = null;
-
+  currentUser:User;
 
   constructor(  private formbuider: FormBuilder,
                 public loginService: LoginService, 
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
       this.isLoading = false;
       this.loginService.onLogin(loginUser)
       .then(res => {
+        this.currentUser = res;
         // Guardo el objeto como un string en el navegador
         localStorage.setItem('usuario', JSON.stringify(res));
 
@@ -43,6 +45,14 @@ export class LoginComponent implements OnInit {
       this.isLoading = true;
   }
 
+  getUser() {
+    if(this.currentUser) {
+      return this.currentUser
+    } else {
+      this.currentUser = JSON.parse(localStorage.getItem('usuario')) as User;
+      return this.currentUser;
+    }
+  }
  
   ngOnInit() {
     //Iniciamos las variables del formulario
