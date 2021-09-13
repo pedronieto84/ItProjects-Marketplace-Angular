@@ -7,16 +7,23 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 })
 export class DragDropComponent implements OnInit {
 
+  resetVar: any ;
+
+  docUpload($event) {
+
+  }
+
+
   afuConfig = {
     multiple: false,
-    formatsAllowed: ".jpg,.png,.pdf",
+    formatsAllowed: ".jpg,.png",
     maxSize: "1",
     uploadAPI:  {
       url:"https://example-file-upload-api",
       method:"POST",
       headers: {
-     "Content-Type" : "text/plain;charset=UTF-8"
-     //,     "Authorization" : `Bearer ${token}`
+     "Content-Type" : "text/plain;charset=UTF-8",
+     "Authorization" : `Bearer ${"token"}`
       },
       params: {
         'page': '1'
@@ -38,7 +45,7 @@ export class DragDropComponent implements OnInit {
       afterUploadMsg_error: 'Upload Failed !',
       sizeLimit: 'Size Limit'
     }
-  };
+};
 
   constructor() { }
 
