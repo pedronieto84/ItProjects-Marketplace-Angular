@@ -19,7 +19,7 @@ export class DatePickerComponent implements OnInit {
     this.sendProjectDate.emit(date);
   }
 
-  constructor(private data: NewProjectService) {}
+  constructor() {}
 
   ngOnInit(): void {
   }

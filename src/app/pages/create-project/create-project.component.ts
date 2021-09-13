@@ -27,20 +27,12 @@ export class CreateProjectComponent implements OnInit {
     }
   }
   
-  setNewProjectBid(newBid: number) {
-    this.newProject.bid = newBid;
-  }
-
-  setNewProjectPublishedDate(publishedDate: Date ) {
-    this.newProject.publishedDate = publishedDate;
-  }
-
-  setNewProjectDeadlineDate(deadline: Date ) {
-    this.newProject.deadlineDate = deadline;
-  }
-  
   setNewTechSet(techList: string[]){
     this.newProject.techSet = techList;
+  }
+
+  changeProjectProperty(property: string, newValue: any) {
+    this.data.changeProjectProperty(property, newValue);
   }
 
   constructor(private data: NewProjectService) { }

@@ -5,9 +5,9 @@
         type="text" 
         class="form-control" 
         [(ngModel)]="newLabel" 
-        (keyup.enter)="[createTag(), addTechSet(techList)]"
+        (keyup.enter)="createTag()"
     >
-    <button class="input-group-text" (click)="[createTag(), addTechSet(techList)]">
+    <button class="input-group-text" (click)="createTag()">
         <i class="bi bi-plus-circle-fill"></i>
     </button>
 </div>
@@ -15,14 +15,10 @@
 <div class="d-flex border col-10 mx-auto flex-wrap" style="min-height: 50px;">
     <div 
         class="d-flex align-items-center p-2" 
-        *ngFor="let tech of newProject.techSet" 
-        id="{{tech}}"
-    >
-    <span class="border shadow-sm p-1">{{tech}}</span>
-    <button class="input-group-text btn-sm"> 
-        <i class="bi bi-dash-circle-fill mx-1"
-        (click)="[deleteTag($event), addTechSet(techList)]">
-        </i>
-    </button>
+        *ngFor="let tech of techList"
+        id={{tech}}>
+        <span class="border shadow-sm p-1">{{tech}}</span>
+        <i class="bi bi-dash-circle-fill mx-1" role="button" (click)="deleteTag($event)"></i>
+    </div>
 </div>
 
