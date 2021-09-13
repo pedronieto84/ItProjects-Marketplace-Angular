@@ -1,4 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { NewProjectService } from '../../../services/new-project.service';
+
 
 @Component({
   selector: 'app-techset',
@@ -7,10 +10,11 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild, Output, EventEmitt
 })
 export class TechsetComponent implements OnInit {
   
-  @ViewChild("tagContainer") tagContainer: ElementRef;
-
   @Output() sendTechSet = new EventEmitter<object>();
 
+  subscription: Subscription;
+
+  newProject:any;
   newLabel: string = "";
   techList: string[] = [];
 
@@ -19,9 +23,15 @@ export class TechsetComponent implements OnInit {
     console.log("addTechSet ",techList);
   }
 
-  constructor(private renderer:Renderer2) { }
+  constructor(private renderer:Renderer2, private data: NewProjectService) { }
 
   ngOnInit(): void {
+    this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject = newProject);
+    this.techList = this.newProject.techSet;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   createTag() {
