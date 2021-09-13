@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Project } from 'src/app/interfaces/interfaces';
+import { Subscription } from 'rxjs';
+import { NewProjectService } from '../../services/new-project.service';
 
 @Component({
   selector: 'app-create-project',
@@ -12,6 +14,9 @@ export class CreateProjectComponent implements OnInit {
   @Input() newProjectDate: Date;
   @Input() sendTechSet: string[];
 
+  newProject: any;
+  subscription: Subscription;
+
   active: number = 1;
   
   moveTab(position: string) {
@@ -21,52 +26,31 @@ export class CreateProjectComponent implements OnInit {
       this.active++;
     }
   }
-
-  // BORRAR AL FINAL
-  newProject: Project = {
-    projectId: '',
-    title : 'Prueba',
-    shortExplanation : 'prueba prueba prueba',
-    ownerId : '',
-    publishedDate : new Date(2015, 7, 12),
-    deadlineDate : new Date(),
-    techSet : [],
-    filesArray : [],
-    bid: 0,
-    state : {
-      id : '',
-      name : ''
-    }
-  };
-
-  projectBid: number;
-
-  setNewProjectDescription(description: any){
-    this.newProject.title = description.title;
-    this.newProject.shortExplanation = description.description;
-    console.log("objeto global es "+this.newProject);
+  
+  setNewProjectBid(newBid: number) {
+    this.newProject.bid = newBid;
   }
 
   setNewProjectPublishedDate(publishedDate: Date ) {
     this.newProject.publishedDate = publishedDate;
-    // this.newProject.publishedDate = sendProjectDate;
-    console.log("set date", this.newProject.publishedDate);
   }
 
-  setNewProjectDeadlineDate(sendProjectDate: Date ) {
-    this.newProject.deadlineDate = sendProjectDate;
+  setNewProjectDeadlineDate(deadline: Date ) {
+    this.newProject.deadlineDate = deadline;
   }
   
   setNewTechSet(techList: string[]){
     this.newProject.techSet = techList;
-    console.log("techList = ", techList);
-    console.log("Techset = ", this.newProject.techSet);
   }
 
-  constructor() { }
+  constructor(private data: NewProjectService) { }
 
   ngOnInit() {
-    
+    this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject = newProject);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

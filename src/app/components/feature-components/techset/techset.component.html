@@ -15,11 +15,14 @@
 <div class="d-flex border col-10 mx-auto flex-wrap" style="min-height: 50px;">
     <div 
         class="d-flex align-items-center p-2" 
-        *ngFor="let tech of techList" 
+        *ngFor="let tech of newProject.techSet" 
         id="{{tech}}"
     >
     <span class="border shadow-sm p-1">{{tech}}</span>
-    <i class="bi bi-dash-circle-fill mx-1" (click)="[deleteTag($event), addTechSet(techList)]"></i>
-    </div>
+    <button class="input-group-text btn-sm"> 
+        <i class="bi bi-dash-circle-fill mx-1"
+        (click)="[deleteTag($event), addTechSet(techList)]">
+        </i>
+    </button>
 </div>
 
