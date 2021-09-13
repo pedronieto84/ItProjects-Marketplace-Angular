@@ -22,7 +22,7 @@ export class LoginService {
 
   /*Servicio de login*/
   onLogin( user: loginUser ):Promise<any> {
-    return this.http.post<User>(this.apiService.baseUrl, user).toPromise()
+    return this.http.post<User>(this.apiService.baseUrl + '/login', user).toPromise()
   }
 
   /*Servicio de logout*/
