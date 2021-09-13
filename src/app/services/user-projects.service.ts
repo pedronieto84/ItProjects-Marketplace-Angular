@@ -24,7 +24,7 @@ export class UserProjectsService {
   //getProjectsId(userId){}
   getProjectsId(): Observable <any> {
         
-    return this.httpClient.get(this.baseUrl + 'getProjects?userId ='+ this.userId)
+    return this.httpClient.get(this.baseUrl + 'getProjects?userId=' + this.userId)
 
     /*
     this.httpClient.get(this.baseUrl + 'getProjects?userId ='+ this.userId).subscribe(

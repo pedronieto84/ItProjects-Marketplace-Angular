@@ -15,8 +15,13 @@ export class ApiService {
   // COMENTAR CON PEDRO: CREO QUE ESTA FUNCIÓN DEBERÍA INCLUIR EL USER ID 
   // COMO PARAMETRO OPCIONAL PARA DEVOLVER SÓLO PROYECTOS DE UN USUARIO
   getProjects(userId:string) {
-    console.log('Se ha ejecutado la función: getProjects');
-    return this.http.get(this.baseUrl+'/getProjects?userId='+userId);
+    console.log('Se ha ejecutado la función: getProjects del'+userId);
+    console.log(this.baseUrl+'/getProjects?userId=' + userId);  
+    console.log(this.baseUrl+'/getProjects?userId%20=' + userId);  
+    console.log("https://us-central1-asamblea-27a8d.cloudfunctions.net/getProjects?userId%20=MfnmxHHRj9OSQggFqd5P")
+    //return this.http.get(this.baseUrl+'/getProjects?userId='+userId);  
+    return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId);  
+    
   }
 
   //  Función getTechSet - Get techset array CONFIRMAR CON PEDRO SI 
