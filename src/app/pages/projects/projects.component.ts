@@ -14,7 +14,7 @@ import { Project } from '../../interfaces/interfaces';
 })
 export class ProjectsComponent implements OnInit {
 
-   projects: Project [];
+  projects = [];
 
 
   //Injectamos el servicio user-projects
@@ -26,9 +26,8 @@ export class ProjectsComponent implements OnInit {
   ngOnInit() {
     
     this.ApiService.getProjects(this.userId).subscribe( 
-      data => { 
-        console.log(JSON.stringify(data));
-        //this.projects = data;
+      (data: any[]) => {    
+        this.projects = data;
       },
       err => {
         console.log("Error");
