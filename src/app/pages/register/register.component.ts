@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router'
 import { User } from 'src/app/interfaces/interfaces';
 
 @Component({
@@ -17,9 +18,12 @@ export class RegisterComponent implements OnInit {
   hasPassword: boolean = false;
   hasTypeOfInst: boolean = false;
 
-  constructor() { }
+  constructor( private router: Router ) { }
+
+  currentUser:User;
 
   ngOnInit() {
+    this.currentUser = JSON.parse(localStorage.getItem('usuario')); 
   }
   
   register(){
@@ -31,6 +35,7 @@ export class RegisterComponent implements OnInit {
       
     }
     console.log('register', userObject)
+    this.router.navigate(['/el-meu-compte']);
   }
 
   
