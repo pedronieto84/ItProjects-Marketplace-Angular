@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 
+<<<<<<< HEAD
 
 
 import { ProjectCardComponent } from './project-card/project-card.component';
@@ -15,11 +16,16 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 
 
 
+import { LoadingSpinnerComponent } from './loader-spinner/loader-spinner.component';
+
+
 @NgModule({
   declarations: [
     NavbarComponent,
     DatePickerComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    LoadingSpinnerComponent
+
   ],
   imports: [
     CommonModule,
@@ -30,7 +36,9 @@ import { ProjectCardComponent } from './project-card/project-card.component';
   exports: [
     NavbarComponent,
     DatePickerComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    LoadingSpinnerComponent
+
   ]
 })
 export class SharedModule { }

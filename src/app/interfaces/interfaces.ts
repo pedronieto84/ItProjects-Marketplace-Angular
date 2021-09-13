@@ -39,3 +39,8 @@ export interface ProjectState {
     id: string
     name: string
 }
+
+export interface loginUser {
+    email: string
+    password: string
+}
