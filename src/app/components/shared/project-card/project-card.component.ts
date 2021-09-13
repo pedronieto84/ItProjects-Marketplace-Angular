@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { Project } from '../../../interfaces/interfaces';
 
+
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',

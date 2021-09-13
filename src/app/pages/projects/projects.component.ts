@@ -22,6 +22,7 @@ export class ProjectsComponent implements OnInit {
 
   //luego por parámetro
   userId = "MfnmxHHRj9OSQggFqd5P";
+  //uPF0Mn9C7RfU9w9pcpzK
 
   ngOnInit() {
     
