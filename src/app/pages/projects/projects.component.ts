@@ -2,10 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 
 //servicios
 import { ApiService } from 'src/app/services/api.service';
-//import { UserProjectsService } from 'src/app/services/user-projects.service';
 
-//interface
-//import { Project } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-projects',
@@ -20,13 +17,17 @@ export class ProjectsComponent implements OnInit {
   //Injectamos el servicio user-projects
   constructor(public ApiService: ApiService) { }
 
-  //luego por parámetro
-  userId = "MfnmxHHRj9OSQggFqd5P";
-  //uPF0Mn9C7RfU9w9pcpzK
 
   ngOnInit() {
     
-    this.ApiService.getProjects(this.userId).subscribe( 
+    let dato = localStorage.getItem('usuario');
+ 
+    //viene como string convierto a objeto
+    let datoObjeto = JSON.parse(dato);
+
+    //carga proyectos de un usuario
+    this.ApiService.getProjects(datoObjeto.userId).subscribe( 
+
       (data: any[]) => {    
         this.projects = data;
       },
