@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 
 //servicios
 import { ApiService } from 'src/app/services/api.service';
 //import { UserProjectsService } from 'src/app/services/user-projects.service';
 
 //interface
-import { Project } from '../../interfaces/interfaces';
+//import { Project } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-projects',

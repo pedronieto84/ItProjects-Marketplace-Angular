@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../../../interfaces/interfaces';
 
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
@@ -10,11 +10,13 @@ import { Project } from '../../../interfaces/interfaces';
 
 export class ProjectCardComponent implements OnInit {
 
-  constructor( ) { }
+  constructor( private router : Router) { }
 
   //variable que viene desde project-component y contiene el objeto proyecto
   @Input() project: Project;
 
+
+ 
   ngOnInit(): void {
     
   }
