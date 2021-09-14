@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { Project } from 'src/app/interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { NewProjectService } from '../../services/new-project.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-create-project',
@@ -10,32 +11,53 @@ import { NewProjectService } from '../../services/new-project.service';
 })
 export class CreateProjectComponent implements OnInit {
 
-  @Input() newProjectDescription: object;
-  @Input() newProjectDate: Date;
-  @Input() sendTechSet: string[];
+  isValidFirstTab: boolean = false;
 
   newProject: any;
   subscription: Subscription;
 
-  active: number = 1;
+  activeTab: number = 1;
   
   moveTab(position: string) {
     if (position === "prev") {
-      this.active--;
+      this.activeTab--;
+      console.log(this.activeTab);
     } else if (position === "next") {
-      this.active++;
+      this.activeTab++;
+      console.log(this.activeTab);
+    }
+  }
+
+  checkValidationFirstTab(e: boolean) {
+    if (e == true) {
+      this.isValidFirstTab = true;
+    } else {
+      this.isValidFirstTab = false;
     }
   }
   
-  setNewTechSet(techList: string[]){
-    this.newProject.techSet = techList;
-  }
-
   changeProjectProperty(property: string, newValue: any) {
     this.data.changeProjectProperty(property, newValue);
   }
 
-  constructor(private data: NewProjectService) { }
+  sendDate(dateType: string, date: any) {
+    date = new Date(date.year, date.month - 1, date.day);
+    let dateMs = date.getTime();
+    console.log(dateMs);
+    this.changeProjectProperty(dateType, dateMs)
+  }
+
+  dateMsToDate(date: number) {
+    
+  }
+
+  createProject() {
+    this.dataApiService.createProject(this.newProject);
+  }
+
+  constructor(private data: NewProjectService,
+              private dataApiService: ApiService
+              ) { }
 
   ngOnInit() {
     this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject = newProject);

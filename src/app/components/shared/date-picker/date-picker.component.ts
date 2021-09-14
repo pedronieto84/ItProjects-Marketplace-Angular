@@ -16,6 +16,7 @@ export class DatePickerComponent implements OnInit {
   newProject: any;
   
   addProjectDate(date: Date) {
+    //const jsDate = new Date(date.year, date.month - 1, d.day);
     this.sendProjectDate.emit(date);
   }
 

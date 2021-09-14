@@ -3,11 +3,14 @@
 
     <div class="border rounded p-3">
     
-        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <ul ngbNav #nav="ngbNav" [(activeId)]="activeTab" class="nav-tabs">
+            
             <li [ngbNavItem]="1">
                 <a ngbNavLink>1</a>
                 <ng-template ngbNavContent>
-                    <app-project-description></app-project-description>
+                    <app-project-description
+                        (sendValidation) = checkValidationFirstTab($event)>
+                    </app-project-description>
                 </ng-template>
             </li>
             <li [ngbNavItem]="2">
@@ -17,7 +20,7 @@
                         <div>
                             <p class="mb-0">Published</p>
                             <app-date-picker 
-                                (sendProjectDate)="changeProjectProperty('publishedDate',$event)"
+                                (sendProjectDate)="sendDate('publishedDate',$event)"
                                 [showDate] = "this.newProject.publishedDate"
                                 >
                             </app-date-picker>
@@ -25,7 +28,7 @@
                         <div>
                             <p class="mb-0">Deadline</p>
                             <app-date-picker
-                                (sendProjectDate)="changeProjectProperty('deadLine',$event)"
+                                (sendProjectDate)="sendDate('deadLine',$event)"
                                 [showDate] = "this.newProject.deadLine"
                                 >
                             </app-date-picker>
@@ -60,28 +63,34 @@
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
         <div class="d-flex justify-content-between p-2">
-            <i 
-                (click)="moveTab('next')"
-                *ngIf="active==1"
-                class="bi bi-arrow-right ml-auto" 
-                style="font-size: 2rem;">
-            </i>
-            <i 
-                (click)="moveTab('prev')"
-                *ngIf="active==2 || active==3"
-                class="bi bi-arrow-left mr-auto" 
-                style="font-size: 2rem;">
-            </i>
-            <i 
-                (click)="moveTab('next')"
-                *ngIf="active==2"
-                class="bi bi-arrow-right ml-auto" 
-                style="font-size: 2rem;">
-            </i>
             <button 
-                *ngIf="active==3" 
+                [disabled]=!isValidFirstTab
+                class="ml-auto btn btn-light"
+                *ngIf="activeTab==1"
+                (click)="moveTab('next')"
+                >
+                <i class="bi bi-arrow-right" style="font-size: 1.5rem;"></i>
+            </button>
+            <button 
+                [disabled]=false
+                class="mr-auto btn btn-light"
+                (click)="moveTab('prev')"
+                *ngIf="activeTab==2 || activeTab==3">
+                <i class="bi bi-arrow-left" style="font-size: 1.5rem;"></i>
+            </button>
+            <button
+                [disabled]=false
+                class="ml-auto btn btn-light"
+                (click)="moveTab('next')"
+                *ngIf="activeTab==2">
+                <i class="bi bi-arrow-right" style="font-size: 1.5rem;"></i>
+            </button>
+            <button
+                [disabled]=false
+                *ngIf="activeTab==3" 
                 type="button" 
-                class="btn btn-secondary px-5">
+                class="btn btn-secondary px-5"
+                (click)="createProject()">
                 Publish
             </button>
         </div>

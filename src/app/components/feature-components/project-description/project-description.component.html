@@ -4,20 +4,21 @@
         <div class="input-group-prepend">
             <span 
                 class="input-group-text"
-                
                 >Project Title</span>
         </div>
         <input 
+            #projectTitle
             type="text" 
             class="form-control" 
-            (keyup)="changeProjectProperty('title', $event.target.value)"
+            (keyup)="[changeProjectProperty('title', $event.target.value), checkValid()]"
             value="{{newProject.title}}">
     </div>
     
     <textarea 
-        class="col-12" 
+        #projectShortExplanation
+        class="col-12 form-control" 
         rows="5"
-        (keyup)="changeProjectProperty('shortExplanation', $event.target.value)"
+        (keyup)="[changeProjectProperty('shortExplanation', $event.target.value) , checkValid()]"
         value="{{newProject.shortExplanation ? newProject.shortExplanation :''}}"
         placeholder="Project Description, 500 characters" 
     ></textarea>
