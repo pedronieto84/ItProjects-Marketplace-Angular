@@ -40,10 +40,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'crear-compte',
-    loadChildren: () => import('./pages/create-account/create-account.module').then(m => m.CreateAccountModule)
-  },
-  {
     path: 'el-meu-compte',
     component: MyAccountComponent,
     loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule)
