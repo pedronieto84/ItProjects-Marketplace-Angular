@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'itProjects-Marketplace-Angular'; // fsdfafasd
+  title = 'itProjects-Marketplace-Angular'; // fsdfafasdfasdfadfasdfaf
 }
