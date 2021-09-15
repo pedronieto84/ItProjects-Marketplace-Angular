@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Renderer2, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NewProjectService } from '../../../services/new-project.service';
 
@@ -10,6 +10,9 @@ import { NewProjectService } from '../../../services/new-project.service';
 })
 export class TechsetComponent implements OnInit {
   
+  @Output() checkChangeTechSet = new EventEmitter<any>();
+
+  @Input() isTechSetValid: boolean;
 
   subscription: Subscription;
 
@@ -18,6 +21,11 @@ export class TechsetComponent implements OnInit {
   techList: string[] = [];
 
   constructor(private renderer:Renderer2, private data: NewProjectService) { }
+
+  techSetChanged() {
+    this.checkChangeTechSet.emit();
+    console.log("change detected")
+  }
 
   ngOnInit(): void {
     this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject = newProject);

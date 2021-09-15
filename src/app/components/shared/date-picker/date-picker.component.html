@@ -2,7 +2,8 @@
 <input type="text" 
     ngbDatepicker 
     #d="ngbDatepicker"
-    [(ngModel)]="showDate"
+    [ngModel]="showDate"
+    [class]=" showDate? 'form-control is-valid' : 'form-control'"
     (dateSelect)="addProjectDate($event)"
     >
 <button (click)="d.toggle()">

@@ -18,24 +18,6 @@ export class ProjectDescriptionComponent implements OnInit {
   @Input() isTitleValid: any;
   @Input() isDescriptionValid: any;
 
-  /*
-
-  <input 
-            #projectTitle
-            type="text" 
-            [ngModel]="newProject.title"
-            (ngModelChange)="metodoCreadoPorPedro($event)"
-            [class]="newProject?.title?.length > 0 ? 'is-valid form-control' : 'form-control'" 
-            (keyup)="[changeProjectProperty('title', $event.target.value)]"
-            value="{{newProject.title}}">
-
-  metodoCreadoPorPedro(ev){
-   if(this.newProject && this.newProject.title ){ 
-    this.sendValidation.emit( this.newProject.title.length >0 ? true : false);
-    }
-  }
-  */
-
   changeDetected() {
     this.checkChange.emit();
   }

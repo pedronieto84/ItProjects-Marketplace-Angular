@@ -1,4 +1,7 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Project } from '../../../interfaces/interfaces';
+import { NewProjectService } from '../../../services/new-project.service';
 
 @Component({
   selector: 'app-drag-drop',
@@ -9,17 +12,20 @@ export class DragDropComponent implements OnInit {
 
   resetVar: any ;
 
-  docUpload($event) {
+  newProject: Project;
+  subscription: Subscription;
 
+  docUpload($event) {
+    this.newProject.filesArray.push();
   }
 
 
   afuConfig = {
     multiple: false,
-    formatsAllowed: ".jpg,.png",
-    maxSize: "1",
+    formatsAllowed: "pdf, png, jpg",
+    maxSize: "100",
     uploadAPI:  {
-      url:"https://example-file-upload-api",
+      url:"-",
       method:"POST",
       headers: {
      "Content-Type" : "text/plain;charset=UTF-8",
@@ -31,10 +37,10 @@ export class DragDropComponent implements OnInit {
       responseType: 'blob',
     },
     theme: "dragNDrop",
-    hideProgressBar: true,
-    hideResetBtn: true,
-    hideSelectBtn: true,
-    fileNameIndex: true,
+    hideProgressBar: false,
+    hideResetBtn: false,
+    hideSelectBtn: false,
+    fileNameIndex: false,
     replaceTexts: {
       selectFileBtn: 'Select Files',
       resetBtn: 'Reset',
@@ -47,11 +53,10 @@ export class DragDropComponent implements OnInit {
     }
 };
 
-  constructor() { }
+  constructor(private data: NewProjectService) { }
 
   ngOnInit(): void {
-
-    
+    this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject = newProject as any);
   }
 
 }
