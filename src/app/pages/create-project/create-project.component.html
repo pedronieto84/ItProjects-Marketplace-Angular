@@ -7,9 +7,12 @@
             
             <li [ngbNavItem]="1">
                 <a ngbNavLink>1</a>
-                <ng-template ngbNavContent>
+                <ng-template ngbNavContent >
                     <app-project-description
-                        (sendValidation) = checkValidationFirstTab($event)>
+                        (checkChange) = "checkValidationFirstTab()"
+                        [isTitleValid]= "isTitleValid"
+                        [isDescriptionValid]= "isDescriptionValid"
+                        >
                     </app-project-description>
                 </ng-template>
             </li>
@@ -21,7 +24,7 @@
                             <p class="mb-0">Published</p>
                             <app-date-picker 
                                 (sendProjectDate)="sendDate('publishedDate',$event)"
-                                [showDate] = "this.newProject.publishedDate"
+                                [showDate] = "dateMsToDate(this.newProject.publishedDate)"
                                 >
                             </app-date-picker>
                         </div>
@@ -29,7 +32,7 @@
                             <p class="mb-0">Deadline</p>
                             <app-date-picker
                                 (sendProjectDate)="sendDate('deadLine',$event)"
-                                [showDate] = "this.newProject.deadLine"
+                                [showDate] = "dateMsToDate(this.newProject.deadLine)"
                                 >
                             </app-date-picker>
                         </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Project } from 'src/app/interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { NewProjectService } from '../../services/new-project.service';
@@ -11,9 +11,13 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CreateProjectComponent implements OnInit {
 
+  isTitleValid: boolean = false;
+  isDescriptionValid: boolean = false;
   isValidFirstTab: boolean = false;
 
   newProject: any;
+  
+
   subscription: Subscription;
 
   activeTab: number = 1;
@@ -28,11 +32,23 @@ export class CreateProjectComponent implements OnInit {
     }
   }
 
-  checkValidationFirstTab(e: boolean) {
-    if (e == true) {
+  checkValidationFirstTab() {
+    console.log("hola")
+    if (this.newProject?.title != "" &&
+        this.newProject?.title != undefined) {
+      this.isTitleValid = true;
+      console.log("isTItleValid= "+this.isTitleValid, 
+                  "isDescriptionValid= "+this.isDescriptionValid,
+                  "newProject.shortExplanation= ", this.newProject.shortExplanation)
+    }
+    if (this.newProject.shortExplanation != "" &&
+          this.newProject?.shortExplanation != undefined) {
+      this.isDescriptionValid = true;
+      console.log("isDescValid")
+    }
+    if (this.isTitleValid && this.isDescriptionValid) {
       this.isValidFirstTab = true;
-    } else {
-      this.isValidFirstTab = false;
+      console.log("isFirstTabValid")
     }
   }
   
@@ -48,7 +64,7 @@ export class CreateProjectComponent implements OnInit {
   }
 
   dateMsToDate(date: number) {
-    
+    let dateShow = new Date(date);
   }
 
   createProject() {

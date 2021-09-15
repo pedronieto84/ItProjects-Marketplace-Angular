@@ -7,18 +7,20 @@
                 >Project Title</span>
         </div>
         <input 
-            #projectTitle
             type="text" 
-            class="form-control" 
-            (keyup)="[changeProjectProperty('title', $event.target.value), checkValid()]"
+            [ngModel]="newProject.title"
+            
+            [class]="isTitleValid? 'is-valid form-control' : 'form-control'" 
+            (keyup)="[changeProjectProperty('title', $event.target.value), changeDetected()]"
             value="{{newProject.title}}">
     </div>
     
     <textarea 
-        #projectShortExplanation
-        class="col-12 form-control" 
         rows="5"
-        (keyup)="[changeProjectProperty('shortExplanation', $event.target.value) , checkValid()]"
+        [ngModel] = "newProject.shortExplanation"
+        
+        [class]="isDescriptionValid? 'is-valid form-control col-12' : 'form-control col-12'"
+        (keyup)="[changeProjectProperty('shortExplanation', $event.target.value), changeDetected()]"
         value="{{newProject.shortExplanation ? newProject.shortExplanation :''}}"
         placeholder="Project Description, 500 characters" 
     ></textarea>
