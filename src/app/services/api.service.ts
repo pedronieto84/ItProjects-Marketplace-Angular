@@ -12,9 +12,11 @@ export class ApiService {
   baseUrl: string = 'https://us-central1-asamblea-27a8d.cloudfunctions.net';
 
   // Función getProjects - Get all projects
+
   getProjects(userId:string) {
-    console.log('Se ha ejecutado la función: getProjects');
-    return this.http.get(this.baseUrl+'/getProjects?userId='+userId);
+    /********************** %20  PEDRO ¡EL ESPACIO! ***************/
+    return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId);  
+    
   }
 
   //  Función getTechSet - Get techset array

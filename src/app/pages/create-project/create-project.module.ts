@@ -8,7 +8,7 @@ import { ProjectDescriptionComponent } from 'src/app/components/feature-componen
 import { TechsetComponent } from 'src/app/components/feature-components/techset/techset.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropComponent } from 'src/app/components/feature-components/drag-drop/drag-drop.component';
-import { AngularFileUploaderModule } from "angular-file-uploader";
+
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -24,7 +24,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CreateProjectRoutingRoutingModule,
     SharedModule,
     FormsModule,
-    AngularFileUploaderModule,
     NgbModule
   ]
 })
