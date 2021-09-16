@@ -11,6 +11,7 @@ import { DragDropComponent } from 'src/app/components/feature-components/drag-dr
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AngularFileUploaderModule } from 'angular-file-uploader';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CreateProjectRoutingRoutingModule,
     SharedModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    AngularFileUploaderModule
   ]
 })
 export class CreateProjectModule { }
