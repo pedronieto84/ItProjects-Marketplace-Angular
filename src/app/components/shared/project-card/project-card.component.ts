@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../../../interfaces/interfaces';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 @Component({
   selector: 'app-project-card',
   templateUrl: './project-card.component.html',
