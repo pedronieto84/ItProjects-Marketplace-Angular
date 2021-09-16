@@ -12,21 +12,17 @@ export class ApiService {
   baseUrl: string = 'https://us-central1-asamblea-27a8d.cloudfunctions.net';
 
   // Función getProjects - Get all projects
-  // COMENTAR CON PEDRO: CREO QUE ESTA FUNCIÓN DEBERÍA INCLUIR EL USER ID 
-  // COMO PARAMETRO OPCIONAL PARA DEVOLVER SÓLO PROYECTOS DE UN USUARIO
-  
+
   getProjects(userId:string) {
     /********************** %20  PEDRO ¡EL ESPACIO! ***************/
     return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId);  
     
   }
 
-  //  Función getTechSet - Get techset array CONFIRMAR CON PEDRO SI 
-  //  EL API ES CORRECTO, CREO QUE DEBERÍA PEDIR LA ID DE UN PROYECTO
-  //  COMO EXPECTED DATA - ProjectId Qp0EWmAbibqa2jiRcWXJ
-  getTechSet(projectId: string) {
+  //  Función getTechSet - Get techset array
+  getTechSet() {
     console.log('Se ha ejecutado la función: getTechSet');
-    return this.http.get(this.baseUrl+'/getTechSet?projectId='+projectId);
+    return this.http.get(this.baseUrl+'/getTechSet');
   }
 
   // Función getUsers - Get all users 
@@ -36,11 +32,9 @@ export class ApiService {
   }
 
   // Función getProject - Get that project, if userId is passed, returns only projects related to this user
-  // COMENTAR CON PEDRO: CREO QUE ESTA FUNCIÓN NO DEBERÍA SOLICITAR EL ID DEL USUARIO
-  // YA QUE CADA PROYECTO TIENE SU ID ÚNICA
-  getProject(projectId: string) {
+  getProject(projectId: string, userId: string) {
     console.log('Se ha ejecutado la función: getProject');
-    return this.http.post( this.baseUrl+'/getProject', {"projectId": projectId});
+    return this.http.post( this.baseUrl+'/getProject', {"projectId": projectId, "userId": userId});
   }
 
   // Función getUser

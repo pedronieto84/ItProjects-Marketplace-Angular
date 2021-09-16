@@ -1,9 +1,10 @@
-<!-- 
+
 <div class="col-10 mx-auto">
-    
-    <angular-file-uploader [config]="afuConfig">
-    </angular-file-uploader>
-    
-Implementar Drag & Drop  
+
+  <angular-file-uploader
+    [config]="afuConfig"
+    [resetUpload]=resetVar
+    (ApiResponse)="docUpload($event)">
+  </angular-file-uploader>
+
 </div>
--->

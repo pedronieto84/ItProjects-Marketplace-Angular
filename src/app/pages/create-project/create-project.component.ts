@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Subscription } from 'rxjs';
+import { NewProjectService } from '../../services/new-project.service';
+import { ApiService } from 'src/app/services/api.service';
 import { Project } from 'src/app/interfaces/interfaces';
 
 @Component({
@@ -7,66 +10,115 @@ import { Project } from 'src/app/interfaces/interfaces';
   styleUrls: ['./create-project.component.scss']
 })
 export class CreateProjectComponent implements OnInit {
+  
+  newProject: Project;
 
-  @Input() newProjectDescription: object;
-  @Input() newProjectDate: Date;
-  @Input() sendTechSet: string[];
+  subscription: Subscription;
+  
+  activeTab: number = 1;
 
-  active: number = 1;
+  showPublishedDate: any;
+  showDeadLine: any;
+  
+  isTitleValid: boolean = false;
+  isDescriptionValid: boolean = false;
+  isValidFirstTab: boolean = false;
+
+  isBidValid: boolean = false;
+  isTechSetValid: boolean = false;
+  isValidSecondTab: boolean = false;
+
+  isValidThirdTab: boolean = true;
   
   moveTab(position: string) {
     if (position === "prev") {
-      this.active--;
+      this.activeTab--;
+      console.log("Active Tab = "+this.activeTab);
     } else if (position === "next") {
-      this.active++;
+      this.activeTab++;
+      console.log("Active Tab = "+this.activeTab);
     }
   }
 
-  // BORRAR AL FINAL
-  newProject: Project = {
-    projectId: '',
-    title : 'Prueba',
-    shortExplanation : 'prueba prueba prueba',
-    ownerId : '',
-    publishedDate : new Date(2015, 7, 12),
-    deadlineDate : new Date(),
-    techSet : [],
-    filesArray : [],
-    bid: 0,
-    state : {
-      id : '',
-      name : ''
+  checkValidationFirstTab() {
+    if (this.newProject?.title != "" &&
+        this.newProject?.title != undefined) {
+      this.isTitleValid = true;
     }
-  };
-
-  projectBid: number;
-
-  setNewProjectDescription(description: any){
-    this.newProject.title = description.title;
-    this.newProject.shortExplanation = description.description;
-    console.log("objeto global es "+this.newProject);
+    if (this.newProject.shortExplanation != "" &&
+      this.newProject?.shortExplanation != undefined) {
+      this.isDescriptionValid = true;
+    }
+    if (this.isTitleValid && this.isDescriptionValid) {
+      this.isValidFirstTab = true;
+    }
   }
 
-  setNewProjectPublishedDate(publishedDate: Date ) {
-    this.newProject.publishedDate = publishedDate;
-    // this.newProject.publishedDate = sendProjectDate;
-    console.log("set date", this.newProject.publishedDate);
+  checkValidationSecondTab() {
+    if(this.showPublishedDate &&
+      this.showDeadLine &&
+      this.isBidValid &&
+      this.isTechSetValid) {
+        this.isValidSecondTab = true;
+    } else {
+      this.isValidSecondTab = false;
+    }
   }
 
-  setNewProjectDeadlineDate(sendProjectDate: Date ) {
-    this.newProject.deadlineDate = sendProjectDate;
+  checkBid() {
+    if(this.newProject.bid > 0) {
+      this.isBidValid = true;
+    } else {
+      this.isBidValid = false;
+    }
+  }
+
+  checkTechSet() {
+    if (this.newProject.techSet.length > 0) {
+      this.isTechSetValid = true;
+    } else {
+      this.isTechSetValid = false;
+    }
   }
   
-  setNewTechSet(techList: string[]){
-    this.newProject.techSet = techList;
-    console.log("techList = ", techList);
-    console.log("Techset = ", this.newProject.techSet);
+  changeProjectProperty(property: string, newValue: any) {
+    this.data.changeProjectProperty(property, newValue);
   }
 
-  constructor() { }
+  // Guarda la fecha en formato NgbDate para 
+  // enviarlo al componente datePicker y lo muestre
+  sendDate(dateType: string, date: any) {
+    if(dateType == "publishedDate") {
+      this.showPublishedDate = date;
+    } else if (dateType == "deadLine") {
+      this.showDeadLine = date;
+    }
+    // Convertir NgbDate a Date 
+    date = new Date(date.year, date.month - 1, date.day);
+    // Convertir a milisegundos
+    let dateMs = date.getTime();
+    // Cambiar la fecha en el Proyecto según si es published o Deadline
+    this.changeProjectProperty(dateType, dateMs);
+  }
+
+  dateMsToDate(dateInMs: number, dateToShow: Date) {
+    dateToShow = new Date(dateInMs);
+  }
+
+  createProject() {
+    this.dataApiService.createProject(this.newProject);
+  }
+
+  constructor(private data: NewProjectService,
+              private dataApiService: ApiService
+              ) { }
 
   ngOnInit() {
-    
+    this.subscription = this.data.currentProject$.subscribe(newProject => this.newProject  = newProject as any);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }
