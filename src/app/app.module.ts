@@ -10,9 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from './components/shared/shared.module';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent

@@ -28,20 +28,19 @@ export class CreateProjectComponent implements OnInit {
   isTechSetValid: boolean = false;
   isValidSecondTab: boolean = false;
 
-  isDragDrop: boolean = false;
+  isValidThirdTab: boolean = true;
   
   moveTab(position: string) {
     if (position === "prev") {
       this.activeTab--;
-      console.log(this.activeTab);
+      console.log("Active Tab = "+this.activeTab);
     } else if (position === "next") {
       this.activeTab++;
-      console.log(this.activeTab);
+      console.log("Active Tab = "+this.activeTab);
     }
   }
 
   checkValidationFirstTab() {
-    console.log("hola")
     if (this.newProject?.title != "" &&
         this.newProject?.title != undefined) {
       this.isTitleValid = true;
@@ -56,16 +55,14 @@ export class CreateProjectComponent implements OnInit {
   }
 
   checkValidationSecondTab() {
-    console.log("checkvalidation second tab");
     if(this.showPublishedDate &&
       this.showDeadLine &&
       this.isBidValid &&
       this.isTechSetValid) {
-      this.isValidSecondTab = true;
+        this.isValidSecondTab = true;
     } else {
       this.isValidSecondTab = false;
     }
-     
   }
 
   checkBid() {
@@ -77,32 +74,20 @@ export class CreateProjectComponent implements OnInit {
   }
 
   checkTechSet() {
-    console.log("prueba checktechset")
     if (this.newProject.techSet.length > 0) {
       this.isTechSetValid = true;
-      console.log("files array "+this.newProject.filesArray);
     } else {
       this.isTechSetValid = false;
-      console.log(this.newProject.filesArray);
     }
-  }
-
-  checkDragDrop() {
-
   }
   
   changeProjectProperty(property: string, newValue: any) {
     this.data.changeProjectProperty(property, newValue);
   }
 
+  // Guarda la fecha en formato NgbDate para 
+  // enviarlo al componente datePicker y lo muestre
   sendDate(dateType: string, date: any) {
-    // Guarda la fecha en formato NgbDate para 
-    // enviarlo al componente datePicker y lo muestre
-
-    /*
-       COMO SELECCIONAR LA VARIABLE DE DATETOSHOW
-       dateToShow = date;
-    */
     if(dateType == "publishedDate") {
       this.showPublishedDate = date;
     } else if (dateType == "deadLine") {
@@ -112,14 +97,12 @@ export class CreateProjectComponent implements OnInit {
     date = new Date(date.year, date.month - 1, date.day);
     // Convertir a milisegundos
     let dateMs = date.getTime();
-    console.log("sendDate in milliseconds! ",dateMs);
     // Cambiar la fecha en el Proyecto según si es published o Deadline
     this.changeProjectProperty(dateType, dateMs);
   }
 
   dateMsToDate(dateInMs: number, dateToShow: Date) {
     dateToShow = new Date(dateInMs);
-    console.log(dateInMs+" in Date is", dateToShow);
   }
 
   createProject() {

@@ -6,7 +6,7 @@ import { NewProjectService } from '../../../services/new-project.service';
 @Component({
   selector: 'app-techset',
   templateUrl: './techset.component.html',
-  styleUrls: ['./techset.component.scss']
+  styleUrls: []
 })
 export class TechsetComponent implements OnInit {
   
@@ -24,7 +24,6 @@ export class TechsetComponent implements OnInit {
 
   techSetChanged() {
     this.checkChangeTechSet.emit();
-    console.log("change detected")
   }
 
   ngOnInit(): void {
@@ -57,11 +56,8 @@ export class TechsetComponent implements OnInit {
   }
 
   deleteTag(e: Event) {
-    console.log(this.techList);
     let techLabel: string = (<HTMLElement>e.target).parentElement.id;
-    
     let index:number = this.techList.indexOf(techLabel);
-    
     this.techList.splice(index,1);
     this.changeProjectProperty('techSet', this.techList);
   }

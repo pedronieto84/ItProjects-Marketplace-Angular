@@ -5,7 +5,7 @@ import { NewProjectService } from '../../../services/new-project.service';
 @Component({
   selector:   'app-project-description',
   templateUrl: './project-description.component.html',
-  styleUrls: ['./project-description.component.scss']
+  styleUrls: []
 })
 export class ProjectDescriptionComponent implements OnInit {
 

@@ -6,7 +6,7 @@ import { NewProjectService } from '../../../services/new-project.service';
 @Component({
   selector: 'app-drag-drop',
   templateUrl: './drag-drop.component.html',
-  styleUrls: ['./drag-drop.component.scss']
+  styleUrls: []
 })
 export class DragDropComponent implements OnInit {
 

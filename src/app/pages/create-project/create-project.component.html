@@ -11,11 +11,11 @@
                     <app-project-description
                         (checkChange) = "checkValidationFirstTab()"
                         [isTitleValid]= "isTitleValid"
-                        [isDescriptionValid]= "isDescriptionValid"
-                        >
+                        [isDescriptionValid]= "isDescriptionValid">
                     </app-project-description>
                 </ng-template>
             </li>
+
             <li [ngbNavItem]="2">
                 <a 
                     ngbNavLink
@@ -26,14 +26,16 @@
                         <div>
                             <p class="mb-0">Published</p>
                             <app-date-picker 
-                                (sendProjectDate)="[sendDate('publishedDate', $event), checkValidationSecondTab()]"
+                                (sendProjectDate)="[sendDate('publishedDate', $event), 
+                                                    checkValidationSecondTab()]"
                                 [showDate]="showPublishedDate">
                             </app-date-picker>
                         </div>
                         <div>
                             <p class="mb-0">Deadline</p>
                             <app-date-picker
-                                (sendProjectDate)="[sendDate('deadLine',$event), checkValidationSecondTab()]"
+                                (sendProjectDate)="[sendDate('deadLine',$event), 
+                                                    checkValidationSecondTab()]"
                                 [showDate]="showDeadLine">
                             </app-date-picker>
                         </div>
@@ -49,9 +51,9 @@
                                     class="input-group-text btn-secondary"
                                     (click)="[changeProjectProperty('bid', bidValue.value),
                                              checkBid(), 
-                                             checkValidationSecondTab()]">
-                                    Bid in Euros
-                            </button>
+                                             checkValidationSecondTab()]"
+                                    >Bid in Euros
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -65,13 +67,10 @@
             <li [ngbNavItem]="3">
                 <a 
                     ngbNavLink 
-                    [class]="!isValidSecondTab ? '' : 'disabled' // Eliminar ! al principio"
+                    [class]="!isValidThirdTab ? '' : 'disabled'"
                     >3</a>
                 <ng-template ngbNavContent>
-                    <app-drag-drop
-                        (checkChangeDragDrop) = "checkDragDrop()">
-                        
-                    </app-drag-drop>
+                    <app-drag-drop></app-drag-drop>
                 </ng-template>
             </li>
         </ul>
@@ -83,8 +82,7 @@
                 [disabled]=!isValidFirstTab
                 class="ml-auto btn btn-light"
                 *ngIf="activeTab==1"
-                (click)="moveTab('next')"
-                >
+                (click)="moveTab('next')">
                 <i class="bi bi-arrow-right" style="font-size: 1.5rem;"></i>
             </button>
             <button 
@@ -101,7 +99,7 @@
                 <i class="bi bi-arrow-right" style="font-size: 1.5rem;"></i>
             </button>
             <button
-                [disabled]=!isDragDrop
+                [disabled]=!isValidThirdTab
                 *ngIf="activeTab==3" 
                 type="button" 
                 class="btn btn-secondary px-5"
@@ -110,5 +108,4 @@
             </button>
         </div>
     </div>
-
 </div>

@@ -6,7 +6,10 @@
         [class]="isTechSetValid? 'is-valid form-control' : 'form-control'" 
         [(ngModel)]="newLabel" 
         (keyup.enter)="[createTag(), techSetChanged()]">
-    <button class="input-group-text" (click)="[createTag(), techSetChanged()]">
+    <button 
+        class="input-group-text" 
+        (click)="[createTag(), techSetChanged()]"
+        >
         <i class="bi bi-plus-circle-fill"></i>
     </button>
 </div>
