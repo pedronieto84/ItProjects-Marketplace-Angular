@@ -10,11 +10,13 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from './components/shared/shared.module';
+import { ProjectLineComponent } from './shared/project-line/project-line.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProjectLineComponent
   ],
   imports: [
     BrowserModule,

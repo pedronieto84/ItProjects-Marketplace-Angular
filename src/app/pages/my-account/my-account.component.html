@@ -1,1 +1,42 @@
-<p>my-account works!</p>
+
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>My Data</a>
+      <ng-template ngbNavContent>
+        <p>Formulario con los datos de mi cuenta</p>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>My Projects</a>
+      <ng-template ngbNavContent>
+        
+    <!--TABLA-->
+               
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">TITLE</th>
+            <th scope="col">PUBLISHED</th>
+            <th scope="col">DEADLINE</th>
+            <th scope="col">BID</th>
+            <th scope="col">STATE</th>                
+          </tr>
+          </thead>
+          <tbody>
+            <div class="row" *ngIf="projects">
+              <div class="col-12 col-md-4 col-lg-3" *ngFor="let project of projects">
+                <app-project-line [project]="project"></app-project-line>    
+            </div> 
+          </div> 
+          </tbody>
+        </table>
+
+
+      </ng-template>
+    </li>
+  </ul>
+  
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  
+
+  

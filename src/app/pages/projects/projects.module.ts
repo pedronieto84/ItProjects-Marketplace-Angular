@@ -15,7 +15,7 @@ import { SharedModule } from 'src/app/components/shared/shared.module'
     CommonModule, 
     ProjectsRoutingModule, 
     NgbModule,
-    SharedModule,    
+    SharedModule    
   ]
 })
 export class ProjectsModule { }

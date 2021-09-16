@@ -1,14 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//componentes
 import { MyAccountComponent } from './my-account.component';
-import { CreateProjectRoutingRoutingModule } from './my-account-routing.module';
 
+//routes
+import {  MyAccountRoutingModule } from '../my-account/my-account-routing.module';
 
+//modules
+import { SharedModule } from 'src/app/components/shared/shared.module' 
 
 @NgModule({
-  declarations: [MyAccountComponent],
+  declarations: [
+    MyAccountComponent
+  ],
   imports: [
-    CommonModule, CreateProjectRoutingRoutingModule
+    CommonModule, 
+    MyAccountRoutingModule,
+    NgbModule,
+    SharedModule 
   ]
 })
 export class MyAccountModule { }
