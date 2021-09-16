@@ -5,7 +5,7 @@ import { ApiService } from '../../../services/api.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: []
 })
 export class NavbarComponent implements OnInit {
 

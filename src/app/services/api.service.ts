@@ -17,9 +17,7 @@ export class ApiService {
     return this.http.get(this.baseUrl+'/getProjects?userId='+userId);
   }
 
-  //  Función getTechSet - Get techset array CONFIRMAR CON PEDRO SI 
-  //  EL API ES CORRECTO, CREO QUE DEBERÍA PEDIR LA ID DE UN PROYECTO
-  //  COMO EXPECTED DATA - ProjectId Qp0EWmAbibqa2jiRcWXJ - QUITAR EL PARAMETRO
+  //  Función getTechSet - Get techset array
   getTechSet() {
     console.log('Se ha ejecutado la función: getTechSet');
     return this.http.get(this.baseUrl+'/getTechSet');

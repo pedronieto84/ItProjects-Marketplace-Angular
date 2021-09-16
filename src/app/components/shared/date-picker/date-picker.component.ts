@@ -1,11 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { NewProjectService } from '../../../services/new-project.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.scss']
+  styleUrls: []
 })
 export class DatePickerComponent implements OnInit {
 
@@ -19,7 +17,7 @@ export class DatePickerComponent implements OnInit {
     this.sendProjectDate.emit(date);
   }
 
-  constructor(private data: NewProjectService) {}
+  constructor() {}
 
   ngOnInit(): void {
   }
