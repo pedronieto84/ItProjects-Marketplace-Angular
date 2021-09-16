@@ -1,0 +1,27 @@
+
+<div class="form-group mt-5 col-10 mx-auto">
+    <div class="input-group mb-4" >
+        <div class="input-group-prepend">
+            <span 
+                class="input-group-text"
+            >Project Title</span>
+        </div>
+        <input 
+            type="text" 
+            [ngModel]="newProject.title"
+            [class]="isTitleValid? 'is-valid form-control' : 'form-control'" 
+            (keyup)="[changeProjectProperty('title', $event.target.value), changeDetected()]"
+            value="{{newProject.title}}"
+        >
+    </div>
+    
+    <textarea 
+        rows="5"
+        [ngModel] = "newProject.shortExplanation"
+        [class]="isDescriptionValid? 'is-valid form-control col-12' : 'form-control col-12'"
+        (keyup)="[changeProjectProperty('shortExplanation', $event.target.value), changeDetected()]"
+        value="{{newProject.shortExplanation ? newProject.shortExplanation :''}}"
+        placeholder="Project Description, 500 characters" 
+    ></textarea>
+
+</div>

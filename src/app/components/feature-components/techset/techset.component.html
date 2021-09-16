@@ -1,0 +1,29 @@
+
+<div class="input-group my-4 col-8 mx-auto">
+    <span class="input-group-text">Add technology needed / desired</span>
+    <input 
+        type="text" 
+        [class]="isTechSetValid? 'is-valid form-control' : 'form-control'" 
+        [(ngModel)]="newLabel" 
+        (keyup.enter)="[createTag(), techSetChanged()]">
+    <button 
+        class="input-group-text" 
+        (click)="[createTag(), techSetChanged()]"
+        >
+        <i class="bi bi-plus-circle-fill"></i>
+    </button>
+</div>
+
+<div 
+    style="min-height: 100px;"
+    [class]="isTechSetValid? 'form-control is-valid d-flex border col-10 mx-auto flex-wrap' 
+            : 'form-control d-flex border col-10 mx-auto flex-wrap'">
+    <div 
+        class="d-flex align-items-center p-2"
+        *ngFor="let tech of techList"
+        id={{tech}}>
+        <span class="border shadow-sm p-1">{{tech}}</span>
+        <i class="bi bi-dash-circle-fill mx-1" role="button" (click)="[deleteTag($event), techSetChanged()]"></i>
+    </div>
+</div>
+

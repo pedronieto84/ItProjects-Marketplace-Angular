@@ -1,25 +1,31 @@
 export interface User {
 
-    id: string
+    userId?: string
     name: string
     email: string
     password: string
-    verified: boolean
-    publishedProjects: string[] // refers to the project id's
+    verified?: boolean
+    publishedProjects?: string[] // refers to the project id's
+    admin?: boolean
+    typeOfInstitution?: string;
 
 }
 
+
+
+
 export interface Project {
 
-    id: string
+    projectId: string
     title: string
     ownerId: string
-    publishedDate: Date
-    deadlineDate: Date
+    publishedDate: Date | number
+    deadlineDate: Date | number
     techSet: string[] // refers to the TechObject Id's
     filesArray: string[] // will be the url of the files
-    explanation: string
-    steate: ProjectState
+    bid: number;
+    shortExplanation: string
+    state: ProjectState
 }
 
 export interface TechObject {
@@ -32,4 +38,9 @@ export interface ProjectState {
     
     id: string
     name: string
+}
+
+export interface loginUser {
+    email: string
+    password: string
 }
