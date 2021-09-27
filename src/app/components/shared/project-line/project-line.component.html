@@ -1,7 +1,11 @@
 <tr>
-    <th scope="row">{{ project.title }}</th>            
-    <td>Fila componente</td>
-    <td>Fila componente</td>
-    <td>Fila componente</td>
-    <td>Fila componente</td>
-  </tr>
+    <th>{{ project.title }}</th>            
+    <td>{{ project.publishedDate }}</td>
+    <td>{{ project.deadlineDate }}</td>
+    <td>{{ project.bid }}</td>
+    <td>{{ project.state }}</td>
+    <td>
+      <button type="button" >Edit</button>
+      <button type="button" >Delete</button>
+   </td>
+</tr>

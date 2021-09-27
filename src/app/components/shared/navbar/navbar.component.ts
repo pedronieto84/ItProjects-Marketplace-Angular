@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.ApiService.getUser('WUnYiEbXKkLhG2FptA1p').subscribe( resp => {
       this.currentUser = resp;
-      console.log( this.currentUser );
+      //console.log( this.currentUser );
     });
  }
 

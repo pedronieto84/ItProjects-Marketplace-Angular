@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,6 +12,7 @@ import {  MyAccountRoutingModule } from '../my-account/my-account-routing.module
 //modules
 import { SharedModule } from 'src/app/components/shared/shared.module' 
 
+
 @NgModule({
   declarations: [
     MyAccountComponent
@@ -19,7 +21,9 @@ import { SharedModule } from 'src/app/components/shared/shared.module'
     CommonModule, 
     MyAccountRoutingModule,
     NgbModule,
-    SharedModule 
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class MyAccountModule { }

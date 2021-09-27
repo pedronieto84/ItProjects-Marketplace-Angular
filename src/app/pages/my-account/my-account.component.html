@@ -2,41 +2,66 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="1">
       <a ngbNavLink>My Data</a>
-      <ng-template ngbNavContent>
-        <p>Formulario con los datos de mi cuenta</p>
+      <ng-template ngbNavContent>        
+        
+          <!--FORMULARIO-->   
+          <form > 
+              <div class="form-group">
+                <input type="text"  name="userName" [(ngModel)]="currentUser.name">       
+              </div>
+              <div class="form-group">
+                <input type="email"  name="email" [(ngModel)]="currentUser.email">            
+              </div>
+              <div class="form-group">
+                <input type="text"  name="password" >
+              </div>
+              <div class="form-group">
+                <input type="text" name="organizationType" [(ngModel)]="currentUser.typeOfInstitution">            
+              </div>
+              <button type="button" class="btn btn-secondary px-5"
+                (click)="modifyUser()">
+                LAPIZ
+            </button>
+          </form>
+
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
       <a ngbNavLink>My Projects</a>
       <ng-template ngbNavContent>
         
-    <!--TABLA-->
-               
-        <table class="table table-striped">
+        <!--TABLA-->                  
+        <table>
           <thead>
-          <tr>
-            <th scope="col">TITLE</th>
-            <th scope="col">PUBLISHED</th>
-            <th scope="col">DEADLINE</th>
-            <th scope="col">BID</th>
-            <th scope="col">STATE</th>                
-          </tr>
+            <tr>
+              <th>TITLE</th>
+              <th>PUBLISHED</th>
+              <th>DEADLINE</th>
+              <th>BID</th>
+              <th>STATE</th>    
+              <th>ACTIONS</th>
+            </tr>
           </thead>
-          <tbody>
-            <div class="row" *ngIf="projects">
-              <div class="col-12 col-md-4 col-lg-3" *ngFor="let project of projects">
-                <app-project-line [project]="project"></app-project-line>    
-            </div> 
-          </div> 
-          </tbody>
-        </table>
+          <tbody *ngFor="let project of projects">
+      
+              <app-project-line [project]="project"></app-project-line>             
 
+          </tbody>
+      </table>
 
       </ng-template>
     </li>
   </ul>
   
-  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  <!--<div [ngbNavOutlet]="nav" class="mt-2"></div>-->
+
+
+
+
+
+    
+
+
   
 
   
