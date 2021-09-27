@@ -26,7 +26,9 @@ export class ProjectsComponent implements OnInit {
     let datoObjeto = JSON.parse(dato);
 
     //carga proyectos de un usuario
-    this.ApiService.getProjects(datoObjeto.userId).subscribe( 
+
+    if(datoObjeto){
+        this.ApiService.getProjects(datoObjeto.userId).subscribe( 
 
       (data: any[]) => {    
         this.projects = data;
@@ -35,6 +37,8 @@ export class ProjectsComponent implements OnInit {
         console.log("Error");
       }
     );
+    }
+  
 
   }
 
