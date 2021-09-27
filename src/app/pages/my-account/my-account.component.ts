@@ -12,6 +12,7 @@ export class MyAccountComponent implements OnInit {
 
   
   projects = [];
+  usr = [];
 
   //pestañas activas
   active = 1;
@@ -25,7 +26,18 @@ export class MyAccountComponent implements OnInit {
     //viene como string convierto a objeto
     let datoObjeto = JSON.parse(dato);
 
-    //carga proyectos de un usuario
+    // USUARIO datos
+    this.ApiService.getUser(datoObjeto.userId).subscribe( 
+
+      (data: any[]) => {    
+        this.usr = data;
+      },
+      err => {
+        console.log("Error");
+      }
+    );
+
+    // PROYECTOS de un usuario
     this.ApiService.getProjects(datoObjeto.userId).subscribe( 
 
       (data: any[]) => {    
