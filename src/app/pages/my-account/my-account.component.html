@@ -1,59 +1,89 @@
 
-<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+ <div class="col-12">
+  <ul ngbNav #nav="ngbNav" class="nav-tabs" [(activeId)]="active">
     <li [ngbNavItem]="1">
       <a ngbNavLink>My Data</a>
-      <ng-template ngbNavContent>        
-        
-          <!--FORMULARIO-->   
-          <form > 
-              <div class="form-group">
-                <input type="text"  name="userName" [(ngModel)]="currentUser.name">       
+      <ng-template ngbNavContent>
+            <!--FORMULARIO-->   
+            <form *ngIf="currentUser" id="updateUserForm" autocomplete='off' [formGroup]='updateUserForm' class="m-2"> 
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="userName" [(ngModel)]="currentUser.name">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
+                </div>                
               </div>
-              <div class="form-group">
-                <input type="email"  name="email" [(ngModel)]="currentUser.email">            
+              <div class="form-text text-danger"
+                    *ngIf="isValid('userName')">
+                    El nombre tiene que tener entre 2 y 70 caracteres
               </div>
-              <div class="form-group">
-                <input type="text"  name="password" >
+              <div class="input-group mb-3">
+                <input type="email" class="form-control" formControlName="UserEmail" [(ngModel)]="currentUser.email">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
+                </div>
               </div>
-              <div class="form-group">
-                <input type="text" name="organizationType" [(ngModel)]="currentUser.typeOfInstitution">            
+              <div class="form-text text-danger"
+                    *ngIf="isValid('UserEmail')">
+                    El email tiene que ser válido
               </div>
-              <button type="button" class="btn btn-secondary px-5"
-                (click)="modifyUser()">
-                LAPIZ
-            </button>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="userPassword" [(ngModel)]="currentUser.password">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
+                </div>
+              </div>
+              <div class="form-text text-danger"
+                    *ngIf="isValid('userPassword')">
+                    La contreña tiene que tener entre 5 y 10 caracteres y al menos un símbolo 
+              </div>
+              <div class="input-group mb-3">
+                <select class="custom-select" id="organizationType">
+                  <option selected value="0">typeoOfInstitution</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button"><i class="bi bi-pencil-fill"></i></button>
+                </div>
+              </div>
+              
           </form>
-
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
       <a ngbNavLink>My Projects</a>
       <ng-template ngbNavContent>
-        
-        <!--TABLA-->                  
-        <table>
-          <thead>
-            <tr>
-              <th>TITLE</th>
-              <th>PUBLISHED</th>
-              <th>DEADLINE</th>
-              <th>BID</th>
-              <th>STATE</th>    
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let project of projects">
-      
-              <app-project-line [project]="project"></app-project-line>             
+            <!--TABLA-->                  
+            <table>
+              <thead>
+                <tr>
+                  <th>TITLE</th>
+                  <th>PUBLISHED</th>
+                  <th>DEADLINE</th>
+                  <th>BID</th>
+                  <th>STATE</th>    
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let project of projects">      
+                  <app-project-line [project]="project"></app-project-line>            
 
-          </tbody>
-      </table>
-
+              </tbody>
+          </table>
       </ng-template>
     </li>
+   
   </ul>
-  
-  <!--<div [ngbNavOutlet]="nav" class="mt-2"></div>-->
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+
+
+
+         
+
+        
+
 
 
 

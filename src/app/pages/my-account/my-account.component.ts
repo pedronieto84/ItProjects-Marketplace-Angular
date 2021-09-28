@@ -1,61 +1,83 @@
 import { Component, OnInit } from '@angular/core';
-
-//servicios
+//services
 import { ApiService } from 'src/app/services/api.service';
-import { User } from '../../interfaces/interfaces';
-
+//form
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss']
 })
 export class MyAccountComponent implements OnInit {
-
   
   projects = [];
   currentUser: any;
+  currentUserTypeInstitution:string ="";
 
   //pestañas activas
   active = 1;
 
-  constructor(public ApiService: ApiService) { }
 
-  ngOnInit() {   
- 
-    
-    let datoObjeto = JSON.parse(localStorage.getItem('usuario')); 
+  //campos de formulario
+  updateUserForm: FormGroup = this.fb.group({
+    userName     : ['', [Validators.minLength(1), Validators.maxLength(70)]],
+    UserEmail     : ['', [Validators.email]], 
+    userPassword     : ['', [
+        Validators.minLength(5), 
+        Validators.maxLength(10), 
+        Validators.pattern('^[a-zA-Z0-9!@#$%^&*]{5,10}$')
+      ]]
+  })
 
-    // USUARIO datos
-    this.ApiService.getUser(datoObjeto.userId).subscribe( data => {
-      this.currentUser = data;
-      console.log("CURRENT USER", this.currentUser );
-    },    
-    err => {
-      console.log("Error");
-    });
-      
-    
+  constructor(private fb:FormBuilder, public ApiService: ApiService) { }
 
-    // PROYECTOS de un usuario
-    this.ApiService.getProjects(datoObjeto.userId).subscribe( 
-      (data: any[]) => {    
-        this.projects = data;
-        //console.log("projects ",this.projects);
-      },
-      err => {
-        console.log("Error");
-      }
-    );
-
-    
-    
-
+  //validación de formulario
+  isValid( campo: string){ 
+    return this.updateUserForm.controls[campo].errors && this.updateUserForm.controls[campo].touched;
   }
 
-  modifyUser() {
-    //envio los datos del formulario modificado
-    // this.ApiService.updateUser(user: User) {
+  ngOnInit() {  
+    let datoObjeto = JSON.parse(localStorage.getItem('usuario')); 
+    if(datoObjeto){
+        // USUARIO datos
+        this.ApiService.getUser(datoObjeto.userId).subscribe( 
+          data => {
+          this.currentUser = data;
+        },    
+        err => {
+          console.log("Error");
+        });    
+        // PROYECTOS de un usuario
+        this.ApiService.getProjects(datoObjeto.userId).subscribe( 
+          (data: any[]) => {    
+            this.projects = data;
+        },
+        err => {
+            console.log("Error");
+        });
+    }else{
+        console.log("Error");
+    } 
+  }
+
+  editUser() {
+    console.log("usr Upadate")
+    
+
+
+      if(this.updateUserForm.invalid){
+        //Pone como si todos los campos han sido tocados
+        this.updateUserForm.markAllAsTouched();      
+        return;
+    }else{
+     
+      //envio los datos del formulario modificado
+      // this.ApiService.updateUser(user: User) {
+       
+
+    } 
 
    }
+  
 
 }
