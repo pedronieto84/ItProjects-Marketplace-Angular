@@ -37,14 +37,16 @@
                     La contraseña tiene que tener entre 5 y 10 caracteres y al menos un símbolo 
               </div>
               <div class="input-group mb-3">
-                <select class="custom-select" id="organizationType" [(ngModel)]="currentUser.typeOfInstitution">
-                  <option value="1">Empresa pública</option>
-                  <option value="3">Empresa privada</option>
-                  <option value="2">3 er sector</option>
-                  <option value="4">Altres</option>
+                <select class="custom-select" id="organizationType" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentUser.typeOfInstitution" >
+                  <option [value]="1" >Empresa pública</option>
+                  <option [value]="3">Empresa privada</option>
+                  <option [value]="2">3 er sector</option>
+                  <option [value]="4">Altres</option>
+                  <option [value]="false"></option>
                 </select>
+                
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button"><i class="bi bi-pencil-fill"></i></button>
+                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
                 </div>
               </div>
               

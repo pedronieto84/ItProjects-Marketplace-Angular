@@ -17,7 +17,6 @@ export class MyAccountComponent implements OnInit {
   currentUser: any;
   currentUserTypeInstitution:string ="";
 
-
   //pestañas activas
   active = 1;
 
@@ -32,7 +31,8 @@ export class MyAccountComponent implements OnInit {
         Validators.minLength(5), 
         Validators.maxLength(10), 
         /*Validators.pattern('^[a-zA-Z0-9!@#$%^&*]$')*/
-      ]]
+      ]],
+      typeOfInstitution:['', []], 
   })
 
   constructor(private fb:FormBuilder, public ApiService: ApiService) { }
@@ -49,8 +49,6 @@ export class MyAccountComponent implements OnInit {
         this.ApiService.getUser(datoObjeto.userId).subscribe( 
           data => {
           this.currentUser = data;
-          //cargamos en el form el tipo de institución
-          this.pushInstitution(this.currentUser.typeOfInstitution);
         },    
         err => {
           console.log("Error");
@@ -84,16 +82,6 @@ export class MyAccountComponent implements OnInit {
       this.ApiService.updateUser(updateUser) 
    }
   }
-  pushInstitution(value:string){
-    console.log(value)
-    if(value == 'false'){
-      this.currentUser.typeOfInstitution = 4;
-      //this.updateUserForm.controls['organizationType'].setValue(4);
-    }else{
-      this.currentUser.typeOfInstitution = value;
-      //this.updateUserForm.controls['organizationType'].setValue(value);
-    }
-    
-  }
+
 
 }
