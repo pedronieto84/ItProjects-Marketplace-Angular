@@ -16,6 +16,12 @@ export class ProjectLineComponent implements OnInit {
 
   ngOnInit(): void {
   }
-    
+  editProject(){
+    console.log("update Proyecto");
+
+  }
+  deleteProject(){
+    console.log("delete Proyecto");
+  }
 
 }

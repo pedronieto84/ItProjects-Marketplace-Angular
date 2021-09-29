@@ -5,7 +5,18 @@
     <td>{{ project.bid }}</td>
     <td>{{ project.state }}</td>
     <td>
-      <button type="button" ><i class="bi bi-pencil-fill"></i></button>
-      <button type="button" ><i class="bi bi-trash-fill"></i></button>
+      <button type="button" (click)="editProject()"><i class="bi bi-pencil-fill"></i></button>
+      <button type="button" (click)="deleteProject()"><i class="bi bi-trash-fill"></i></button>
    </td>
 </tr>
+
+
+
+
+
+<!--FORMULARIO???
+[(ngModel)]="project.title"     
+    <td [(ngModel)]="project.publishedDate"></td>
+    <td [(ngModel)]="project.deadlineDate"></td>
+    <td [(ngModel)]="project.bid"></td>
+    <td [(ngModel)]=" project.state"></td>-->
