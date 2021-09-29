@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   getUser() {
+    debugger
     if(this.currentUser) {
       return this.currentUser
     } else {

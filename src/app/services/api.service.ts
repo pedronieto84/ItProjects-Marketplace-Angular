@@ -57,8 +57,10 @@ export class ApiService {
 
   // Función createUser
   createUser(user: User) {
-    console.log('Se ha ejecutado la función: createUser');
+    console.log('Se ha ejecutado la función: createUser', user);
     return this.http.post(this.baseUrl+'/createUser', {"user": user});
+    
+    debugger
   }
 
   // Función updateProject

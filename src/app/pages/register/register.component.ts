@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { User } from 'src/app/interfaces/interfaces';
-
+import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   hasPassword: boolean = false;
   hasTypeOfInst: boolean = false;
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router, private ApiService:ApiService) { }
 
   currentUser:User;
 
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
       typeOfInstitution: this.typeOfInstitution,
       
     }
-    console.log('register', userObject)
+    this.ApiService.createUser(userObject); 
     this.router.navigate(['/el-meu-compte']);
   }
 
