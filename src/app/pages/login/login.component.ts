@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isLoading = false;
   messageError: string = null;
-  currentUser:User;
+  currentUser: User;
 
   constructor(  private formbuider: FormBuilder,
                 public loginService: LoginService, 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
         const res = await this.loginService.onLogin(loginUser)
         this.currentUser = res;
-        
+        this.loginService.updateUser(res)
         // Guardo el objeto como un string en el navegador
         localStorage.setItem('usuario', JSON.stringify(res));
         
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
   
 
   getUser() {
-    debugger
+    
     if(this.currentUser) {
       return this.currentUser
     } else {

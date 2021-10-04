@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { loginUser, User } from '../interfaces/interfaces';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
 
@@ -12,10 +12,10 @@ import { ApiService } from './api.service';
 export class LoginService {
 
   //creamos observable
-  private newUserSource = new BehaviorSubject<Boolean>(false);
+  private newUserSource = new BehaviorSubject< User | null >(null);
 
   //exponemos el observable
-  currentUser$ = this.newUserSource.asObservable();
+  currentUser$: Observable<User | null> = this.newUserSource.asObservable();
   
   constructor(  private http:HttpClient,
                 public apiService: ApiService) { }  
@@ -31,7 +31,11 @@ export class LoginService {
     //borramos información del localstorage
     localStorage.removeItem('usuario');
     //enviamos el observable
-    this.newUserSource.next(false);
+    this.newUserSource.next(null);
+  }
+
+  updateUser(user: User){
+    this.newUserSource.next(user)
   }
 
 }
