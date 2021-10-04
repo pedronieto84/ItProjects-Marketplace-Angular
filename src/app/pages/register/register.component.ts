@@ -26,15 +26,14 @@ export class RegisterComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('usuario')); 
   }
   
-  register(){
+  async register(){
     const userObject: User = {
       email: this.email,
       name: this.name,
       password: this.password,
       typeOfInstitution: this.typeOfInstitution,
-      
     }
-    this.ApiService.createUser(userObject); 
+    await this.ApiService.createUser(userObject).toPromise();
     this.router.navigate(['/el-meu-compte']);
   }
 

@@ -58,7 +58,7 @@ export class ApiService {
   // Función createUser
   createUser(user: User) {
     console.log('Se ha ejecutado la función: createUser', user);
-    return this.http.post(this.baseUrl+'/createUser', {"user": user});
+    return this.http.post(this.baseUrl+'/createUser', user);
     
     debugger
   }
@@ -72,7 +72,7 @@ export class ApiService {
   // Función updateUser
   updateUser(user: User) {
     console.log('Se ha ejecutado la función: updateUser');
-    return this.http.post(this.baseUrl+'/updateUser', {"user": user});
+    return this.http.post(this.baseUrl+'/updateUser', user);
   }
 
   // Función deleteProject
