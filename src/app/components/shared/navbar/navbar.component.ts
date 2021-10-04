@@ -10,25 +10,14 @@ import { ApiService } from '../../../services/api.service';
   templateUrl: './navbar.component.html',
   styleUrls: []
 })
-export class NavbarComponent implements OnInit, OnDestroy {
+export class NavbarComponent implements OnInit {
 
-  currentUserSubscription: Subscription;
+  userObservable$: Observable<User | any>;
 
   
   constructor(  private loginServ: LoginService) {
 
-    this.currentUserSubscription = this.loginServ.currentUser$.subscribe((res: any) => {
-      
-      
-      
-      if(res){
-      console.log('res', res);
-      this.currentUser = res//.currentUser;
-      
-      }
-      
-    
-    })
+    this.userObservable$ = this.loginServ.currentUser$;
    }
 
   currentUser: any;
@@ -46,7 +35,5 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });*/
  }
 
-  ngOnDestroy(): void {
-    this.currentUserSubscription.unsubscribe()
-  }
+ 
 }
