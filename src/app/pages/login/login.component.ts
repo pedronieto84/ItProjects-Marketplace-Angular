@@ -38,9 +38,7 @@ export class LoginComponent implements OnInit {
         this.currentUser = res;
         // Guardo el objeto como un string en el navegador
         localStorage.setItem('usuario', JSON.stringify(res));
-
-        /*Faltan definir las rutas*/
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/el-meu-compte']);
       }).catch(err => {this.messageError = err.error.error;});
       this.isLoading = true;
   }
