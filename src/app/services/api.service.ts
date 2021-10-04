@@ -16,7 +16,7 @@ export class ApiService {
   getProjects(userId:string) {
     /********************** %20  PEDRO ¡EL ESPACIO! ***************/
     console.log(userId); 
-    return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId); 
+    return this.http.get(this.baseUrl+'/getProjects?userId='+userId); 
     
     
   }

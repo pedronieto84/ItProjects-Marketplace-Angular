@@ -55,8 +55,7 @@
     </li>
     <li [ngbNavItem]="2">
       <a ngbNavLink>My Projects</a>
-      <ng-template ngbNavContent>
-        
+      <ng-template ngbNavContent>        
             <!--TABLA-->                  
             <table class="table table-striped">
               <thead>
@@ -69,9 +68,11 @@
                   <th>ACTIONS</th>
                 </tr>
               </thead>
-              <tbody *ngFor="let project of projects">                        
-                <app-project-line [project]="project"></app-project-line>    
-              </tbody>
+              <tbody>   
+                  <tr *ngFor="let project of projects" >
+                      <app-project-line [project]="project"></app-project-line>
+                  </tr>           
+              </tbody>         
           </table>
       </ng-template>
     </li>

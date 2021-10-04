@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //interfaces
 import { User } from '../../interfaces/interfaces'
 import { __values } from 'tslib';
+
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
@@ -20,18 +21,15 @@ export class MyAccountComponent implements OnInit {
   //pestañas activas
   active = 1;
 
-  // regex de register ??
-  ///^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,10}$/
-
   //campos de formulario
   updateUserForm: FormGroup = this.fb.group({
     userName     : ['', [Validators.minLength(1)]],
     UserEmail     : ['', [Validators.email]], 
-    userPassword     : ['', [
-        Validators.minLength(5), 
-        Validators.maxLength(10), 
-        /*Validators.pattern('^[a-zA-Z0-9!@#$%^&*]$')*/
-      ]],
+    userPassword     : ['',  [  Validators.required,
+                                Validators.minLength(6),                                
+                                Validators.maxLength(10),
+                                Validators.pattern(
+                                /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/)]],
       typeOfInstitution:['', []], 
   })
 
@@ -78,8 +76,13 @@ export class MyAccountComponent implements OnInit {
         password: this.currentUser.password,
         typeOfInstitution: this.currentUser.typeOfInstitution,
       } 
-      console.log(updateUser);
-      this.ApiService.updateUser(updateUser) 
+      this.ApiService.updateUser(updateUser).toPromise().then(res => {
+        alert("Usuario actualizado")
+      },
+      msg =>{
+        console.log("Error")
+      });
+      
    }
   }
 
