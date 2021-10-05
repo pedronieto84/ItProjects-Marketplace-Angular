@@ -8,7 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 
 import { ProjectCardComponent } from './project-card/project-card.component';
-import { ProjectLineComponent } from './project-line/project-line.component';
+
 
 import { LoadingSpinnerComponent } from './loader-spinner/loader-spinner.component';
 @NgModule({
@@ -16,8 +16,7 @@ import { LoadingSpinnerComponent } from './loader-spinner/loader-spinner.compone
     NavbarComponent,
     DatePickerComponent,
     ProjectCardComponent,
-    LoadingSpinnerComponent,
-    ProjectLineComponent
+    LoadingSpinnerComponent
 
   ],
   imports: [
@@ -31,9 +30,7 @@ import { LoadingSpinnerComponent } from './loader-spinner/loader-spinner.compone
     NavbarComponent,
     DatePickerComponent,
     ProjectCardComponent,
-    LoadingSpinnerComponent,
-    ProjectLineComponent
-
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }
