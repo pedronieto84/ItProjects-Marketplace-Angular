@@ -1,27 +1,50 @@
  
+ <form id="updateUserForm" autocomplete='off' [formGroup]='updateProjectForm' class="m-2"> 
+    <th>
+      <input 
+        type="text" 
+        class="form-control" 
+        formControlName="title"
+        [(ngModel)]="project.title"/>
+    </th> 
 
-    <th><input type="text" class="form-control" [(ngModel)]="project.title" /></th>  
-    
-    <td contenteditable>{{ project.publishedDate }}</td>
-    <td contenteditable>{{ project.deadlineDate }}</td>
-    <td contenteditable>{{ project.bid }}</td>
-    <td contenteditable>{{ project.state }}</td>
+    <td>
+      <input 
+        type="text" 
+        class="form-control" 
+        formControlName="publishedDate"
+        [(ngModel)]="project.publishedDate"/>
+    </td> 
+
+    <td>
+      <input 
+        type="text" 
+        class="form-control" 
+        formControlName="deadlineDate"
+        [(ngModel)]="project.deadlineDate"/>
+    </td> 
+
+    <td>
+      <input 
+        type="text" 
+        class="form-control" 
+        formControlName="bid"
+        [(ngModel)]="project.bid"/>
+    </td> 
+
+    <td>
+      <input 
+        type="text" 
+        class="form-control" 
+        formControlName="state"
+        [(ngModel)]="project.state"/>
+    </td> 
+
     <td>
       <button type="button" (click)="editProject()"><i class="bi bi-pencil-fill"></i></button>
       <button type="button" (click)="deleteProject()"><i class="bi bi-trash-fill"></i></button>
-   </td>
+    </td>
 
-   
+    </form>
 
-
-   <!-- 
-    <td [(ngModel)]="project.publishedDate" name="publishedDate" class="form-control"></td>
-    
-    <td [(ngModel)]="project.deadlineDate" name="deadlineDate" class="form-control"></td>
-    
-    <td [(ngModel)]="project.bid" name="bid" class="form-control"></td>
-    
-    <td [(ngModel)]=" project.state" name="state" class="form-control"></td>
-    -->
-
-
+ 

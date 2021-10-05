@@ -4,7 +4,8 @@ import { Project } from '../../../interfaces/interfaces';
 import {  Router } from '@angular/router';
 //services
 import { ApiService } from 'src/app/services/api.service';
-
+//form
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-project-line',
   templateUrl: './project-line.component.html',
@@ -12,16 +13,29 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProjectLineComponent implements OnInit {
 
-  constructor(private router : Router, public ApiService: ApiService) { }
+  constructor(private router : Router, public ApiService: ApiService, private fb:FormBuilder) { }
 
   @Input() project: Project;
 
-
+  //campos de formulario
+  updateProjectForm: FormGroup = this.fb.group({
+    title         : ['', [Validators.required, Validators.minLength(1)]],
+    publishedDate : ['', [Validators.minLength(1)]],
+    deadlineDate : ['', [Validators.minLength(1)]],
+    bid : ['', [Validators.minLength(1)]],
+    state : ['', [Validators.minLength(1)]],
+  })
 
   ngOnInit(): void {
   }
   editProject(){
-    console.log("update Proyecto", this.project.projectId);
+    this.ApiService.updateProject(this.project).subscribe(
+      (data: any[]) => {    
+        alert("El projecto se ha actualizado");     
+      },
+      err => {
+        console.log("Error");
+      });
 
   }
   deleteProject(){
@@ -29,10 +43,8 @@ export class ProjectLineComponent implements OnInit {
       this.ApiService.deleteProject(this.project.projectId).subscribe( 
         (data: any[]) => {    
           alert("El projecto se ha eliminado");
-          //actualizar página     
-          //this.router.navigate(['/el-meu-compte']);
-         
-
+          //actualizar página ?? o eliminar fila actual con viewChild??
+          
       },
       err => {
           console.log("Error");

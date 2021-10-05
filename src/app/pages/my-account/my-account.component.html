@@ -27,7 +27,11 @@
                     El email tiene que ser válido
               </div>
               <div class="input-group mb-3">
-                <input type="text" class="form-control" formControlName="userPassword" [(ngModel)]="currentUser.password">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  formControlName="userPassword" 
+                  [(ngModel)]="currentUser.password">
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
                 </div>
@@ -69,7 +73,7 @@
                 </tr>
               </thead>
               <tbody>   
-                  <tr *ngFor="let project of projects" >
+                  <tr *ngFor="let project of projects">
                       <app-project-line [project]="project"></app-project-line>
                   </tr>           
               </tbody>         
