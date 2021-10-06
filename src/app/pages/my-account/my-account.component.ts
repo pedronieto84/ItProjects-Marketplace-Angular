@@ -4,40 +4,59 @@ import { ApiService } from 'src/app/services/api.service';
 //form
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //interfaces
-import { User } from '../../interfaces/interfaces'
-import { __values } from 'tslib';
+import { User, Project } from '../../interfaces/interfaces'
+
+//import { __values } from 'tslib';
 
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss']
 })
+
 export class MyAccountComponent implements OnInit {
-  
-  projects = [];
+
   currentUser: any;
   currentUserTypeInstitution:string ="";
-
+ 
+  projects = [];
+  project: Project;
+  
   //pestañas activas
   active = 1;
 
-  //campos de formulario
+  constructor(private fb:FormBuilder, public ApiService: ApiService) { }
+
+  //VALIDACIONES campos de formulario datos de usuario
   updateUserForm: FormGroup = this.fb.group({
-    userName     : ['', [Validators.minLength(1)]],
-    UserEmail     : ['', [Validators.email]], 
-    userPassword     : ['',  [  Validators.required,
+    userName          : ['', [  Validators.required,
+                                Validators.minLength(1)]],
+    UserEmail         : ['', [  Validators.required,
+                                Validators.email]], 
+    userPassword      : ['', [  Validators.required,
                                 Validators.minLength(6),                                
                                 Validators.maxLength(10),
                                 Validators.pattern(
                                 /^(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/)]],
-      typeOfInstitution:['', []], 
+    typeOfInstitution : ['', []], 
   })
 
-  constructor(private fb:FormBuilder, public ApiService: ApiService) { }
+  //VALIDACIONES campos de formulario, datos de los projectos de ese usuario
+  updateProjectForm: FormGroup = this.fb.group({
+    title             : ['', [  Validators.required, Validators.minLength(1)]],
+    publishedDate     : ['', [  ]],
+    deadlineDate      : ['', [  ]],
+    bid               : ['', [  Validators.required, Validators.min(1)]],
+    state             : ['', [  Validators.required]],
+  })
 
-  //validación de formulario
-  isValid( campo: string){ 
+
+  //validaciones de formulario
+  isValidUser( campo: string){ 
     return this.updateUserForm.controls[campo].errors && this.updateUserForm.controls[campo].touched;
+  }
+  isValidProject( campo: string){ 
+    return this.updateProjectForm.controls[campo].errors && this.updateProjectForm.controls[campo].touched;
   }
 
   ngOnInit() {  
@@ -63,6 +82,9 @@ export class MyAccountComponent implements OnInit {
         console.log("Error");
     } 
   }
+  
+
+  // TAB USER 
 
   editUser() {
     if(this.updateUserForm.invalid){
@@ -84,7 +106,46 @@ export class MyAccountComponent implements OnInit {
       });
       
    }
+
   }
 
+
+
+
+  //TAB PROJECTS 
+  editProject(projectObject:Project){
+    console.log(this.updateProjectForm.invalid)
+    if(this.updateProjectForm.invalid){
+      this.updateProjectForm.markAllAsTouched();      
+      return;
+    }else{
+      this.ApiService.updateProject(projectObject).subscribe(
+        (data: any[]) => {    
+          alert("El projecto se ha actualizado");     
+        },
+        err => {
+          console.log("Error");
+        });
+   }
+
+  }
+  deleteProject(IdProject:string){
+    console.log("delete",IdProject)
+      this.ApiService.deleteProject(IdProject).subscribe( 
+        (data: any[]) => {    
+          alert("El projecto se ha eliminado");
+          //actualizar página ?? o eliminar fila actual con viewChild??
+          
+      },
+      err => {
+          console.log("Error");
+      });
+  }
+
+
+
+  sendDate(dateType: string, date: any) {
+    console.log("sendDate: ",dateType,date )
+  }
 
 }
