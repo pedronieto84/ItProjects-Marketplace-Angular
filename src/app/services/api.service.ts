@@ -53,8 +53,9 @@ export class ApiService {
 
   // Función createProject
   createProject(project: Project) {
-    console.log('Se ha ejecutado la función: createProject');
-    return this.http.post( this.baseUrl+'/createProject', {"project": project});
+    console.log('Se ha ejecutado la función: createProject', project);
+    return this.http.post( this.baseUrl+'/createProject', project);
+    
   }
 
   // Función createUser
@@ -67,8 +68,8 @@ export class ApiService {
 
   // Función updateProject
   updateProject(project: Project) {
-    console.log('Se ha ejecutado la función: updateProject');
-    return this.http.post(this.baseUrl+'/updateProject', {"project": project});
+    console.log('Se ha ejecutado la función: updateProject', project);
+    return this.http.post(this.baseUrl+'/updateProject', project);
   }
 
   // Función updateUser
@@ -80,13 +81,13 @@ export class ApiService {
   // Función deleteProject
   deleteProject(projectId:string) {
     console.log('Se ha ejecutado la función: deleteProject');
-    return this.http.post(this.baseUrl+'/deleteProject', {"projectId": projectId});
+    return this.http.post(this.baseUrl+'/deleteProject', projectId);
   }
 
   // Función deleteUser
   deleteUser(userId: string) {
     console.log('Se ha ejecutado la función: deleteUser');
-    return this.http.post(this.baseUrl+'/deleteUser', {"userId": userId});
+    return this.http.post(this.baseUrl+'/deleteUser', userId);
   }
 
   // Función login
