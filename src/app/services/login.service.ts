@@ -17,18 +17,12 @@ export class LoginService {
   //exponemos el observable
   public currentUser$: Observable<User | null> = this.newUserSource.asObservable();
 
-  
   constructor(  private http:HttpClient,
                 public apiService: ApiService) { }  
 
-
- 
-
   onLogin( user: loginUser ):Promise<any> {
     return this.http.post<User>(this.apiService.baseUrl + '/login', user).toPromise()
-
   }
-
   
   /*Servicio de logout*/
   onLogout() {
