@@ -12,28 +12,12 @@ import { ApiService } from '../../../services/api.service';
 })
 export class NavbarComponent implements OnInit {
 
-  userObservable$: Observable<User | any>;
-
+ userObservable$: Observable<User | any>;
   
-  constructor(  private loginServ: LoginService) {
-
-    this.userObservable$ = this.loginServ.currentUser$;
-   }
-
-  currentUser: any;
-
-  
+  constructor(  private loginServ: LoginService) { }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('usuario')); 
-    console.log('usr id',  this.currentUser.userId);
-    
-
-   /* this.ApiService.getUser(usr).subscribe( resp => {
-      this.currentUser = resp;
-      console.log( ' this.currentUser',this.currentUser );
-    });*/
- }
-
- 
+    this.userObservable$ = this.loginServ.currentUser$;  
+  }
+  
 }

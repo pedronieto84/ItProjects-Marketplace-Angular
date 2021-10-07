@@ -4,53 +4,52 @@
       type="button"
       class="btn btn-primary px-5"
       [routerLink]="['admin']"
-      *ngIf="this.currentUser?.admin"
-    >
+      *ngIf="(userObservable$ | async)?.admin">
       Admin
     </button>
     <button
       type="button"
       class="btn btn-secondary px-5"
-      [routerLink]="['projects']"
-    >
+      [routerLink]="['projects']">
       Projects
     </button>
   </div>
-
-  <div ngbDropdown>
+  <div ngbDropdown><!--POR QUÉ ES DROPDOWN?-->
     <div class="btn-group" role="group">
       <button
         type="button"
         class="btn btn-primary"
-        [routerLink]="['crear-projecte']"
-      >
+        [routerLink]="['crear-projecte']">
         CREATE PROJECT
       </button>
     </div>
   </div>
+
   <div class="btn-group">
     <button
-      type="button"
-      class="btn btn-primary"
-      [routerLink]="['el-meu-compte']"
-      *ngIf="this.currentUser"
-    >
-      {{ (currentUser | async)?.name }}
+        type="button"
+        class="btn btn-primary"
+        [routerLink]="['el-meu-compte']"
+        *ngIf="userObservable$ | async">
+      <!--Esta pipe lo que hace es suscribirse a un Observable y 
+        devolver el último valor emitido, en este caso el usuario y su nombre. 
+        Además, cuando el componente se destruye, la pipe cancela la suscripción por ti.-->
+        {{ (userObservable$ | async)?.name }}
     </button>
 
     <button
-      type="button"
-      class="btn btn-secondary"
-      [routerLink]="['login']"
-      *ngIf="this.currentUser; else logIn"
-    >
+        type="button"
+        class="btn btn-secondary"
+        [routerLink]="['login']"
+        *ngIf="userObservable$ | async; else logIn">
       Log Off
     </button>
 
-    <!--Aquí ver a donde dirijimos el routerLink-->
     <ng-template #logIn>
-      <button type="button" class="btn btn-secondary" [routerLink]="['login']">
-        Log In
+      <button type="button" 
+        class="btn btn-secondary" 
+        [routerLink]="['login']">
+          Log In
       </button>
     </ng-template>
   </div>
