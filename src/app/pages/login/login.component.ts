@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.loginService.updateUser(res)
         // Guardo el objeto como un string en el navegador
         localStorage.setItem('usuario', JSON.stringify(res));
-        
+        // asdfasfdsa
         this.router.navigate(['/el-meu-compte']);
         this.isLoading = false
         
