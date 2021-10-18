@@ -1,157 +1,199 @@
-
- <div class="col-12">
+<div class="col-12">
   <ul ngbNav #nav="ngbNav" class="nav-tabs" [(activeId)]="active">
     <li [ngbNavItem]="1">
       <a ngbNavLink>My Data</a>
       <ng-template ngbNavContent>
-            <!--FORMULARIO-->   
-            <form *ngIf="currentUser" id="updateUserForm" autocomplete='off' [formGroup]='updateUserForm' class="m-2"> 
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" formControlName="userName" [(ngModel)]="currentUser.name">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
-                </div>                
-              </div>
-              <div class="form-text text-danger"
-                    *ngIf="isValidUser('userName')">
-                    El nombre tiene que tener entre 2 y 70 caracteres
-              </div>
-              <div class="input-group mb-3">
-                <input type="email" class="form-control" formControlName="UserEmail" [(ngModel)]="currentUser.email">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
-                </div>
-              </div>
-              <div class="form-text text-danger"
-                    *ngIf="isValidUser('UserEmail')">
-                    El email tiene que ser válido
-              </div>
-              <div class="input-group mb-3">
-                <input 
-                  type="text" 
-                  class="form-control" 
-                  formControlName="userPassword" 
-                  [(ngModel)]="currentUser.password">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
-                </div>
-              </div>
-              <div class="form-text text-danger"
-                    *ngIf="isValidUser('userPassword')">
-                    La contraseña tiene que tener entre 5 y 10 caracteres y al menos un símbolo 
-              </div>
-              <div class="input-group mb-3">
-                <select class="custom-select" id="organizationType" [ngModelOptions]="{standalone: true}" [(ngModel)]="currentUser.typeOfInstitution" >
-                  <option [value]="1" >Empresa pública</option>
-                  <option [value]="3">Empresa privada</option>
-                  <option [value]="2">3 er sector</option>
-                  <option [value]="4">Altres</option>
-                  <option [value]="false"></option>
-                </select>
-                
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" (click)="editUser()"><i class="bi bi-pencil-fill"></i></button>
-                </div>
-              </div>
-              
-            </form>
+        <!--FORMULARIO-->
+        <form
+          *ngIf="currentUser"
+          id="updateUserForm"
+          autocomplete="off"
+          [formGroup]="updateUserForm"
+          class="m-2"
+        >
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="userName"
+              [(ngModel)]="currentUser.name"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="editUser()"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-text text-danger" *ngIf="isValidUser('userName')">
+            El nombre tiene que tener entre 2 y 70 caracteres
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="email"
+              class="form-control"
+              formControlName="UserEmail"
+              [(ngModel)]="currentUser.email"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="editUser()"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-text text-danger" *ngIf="isValidUser('UserEmail')">
+            El email tiene que ser válido
+          </div>
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="userPassword"
+              [(ngModel)]="currentUser.password"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="editUser()"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </div>
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="isValidUser('userPassword')"
+          >
+            La contraseña tiene que tener entre 5 y 10 caracteres y al menos un
+            símbolo
+          </div>
+          <div class="input-group mb-3">
+            <select
+              class="custom-select"
+              id="organizationType"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="currentUser.typeOfInstitution"
+            >
+              <option [value]="1">Empresa pública</option>
+              <option [value]="3">Empresa privada</option>
+              <option [value]="2">3 er sector</option>
+              <option [value]="4">Altres</option>
+              <option [value]="false"></option>
+            </select>
+
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="editUser()"
+              >
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+            </div>
+          </div>
+        </form>
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
       <a ngbNavLink>My Projects</a>
-      <ng-template ngbNavContent>        
-            <!--TABLA-->                  
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>TITLE</th>
-                  <th>PUBLISHED</th>
-                  <th>DEADLINE</th>
-                  <th>BID</th>
-                  <th>STATE</th>    
-                  <th>ACTIONS</th>
-                </tr>
-              </thead>
-              <tbody *ngIf="projects">   
-                  <tr *ngFor="let project of projects" [formGroup]='updateProjectForm'>    
-                        <td>
-                          <input 
-                              type="text" 
-                              class="form-control" 
-                              formControlName="title" 
-                              [(ngModel)]="project.title">
-                          <span class="form-text text-danger"
-                              *ngIf="isValidProject('title')">
-                              Hay que introducir un título válido
-                          </span>
-                        </td>
-                        
-                        <td>
-                            <app-date-picker 
-                            (sendProjectDate)="[sendDate('project.publishedDate', $event)]"
-                            (showDate) = "project.publishedDate">
-                            </app-date-picker>
-                        </td>
-                        <td>
-                            <app-date-picker 
-                              (sendProjectDate)="[sendDate('project.deadlineDate', $event)]"
-                              (showDate) = "project.deadlineDate">
-                            </app-date-picker>
-                        </td>
-                        <td>
-                          <input 
-                              type="text" 
-                              class="form-control" 
-                              formControlName="bid" 
-                              [(ngModel)]="project.bid">
-                          <span class="form-text text-danger"
-                              *ngIf="isValidProject('bid')">
-                              Hay que introducir el precio
-                          </span>
-                        </td>
-                        <td>
-                          <input 
-                              type="text" 
-                              class="form-control" 
-                              formControlName="state" 
-                              [(ngModel)]="project.state">
-                          <span class="form-text text-danger"
-                              *ngIf="isValidProject('state')">
-                              Hay que introducir el stado
-                          </span>
-                        </td>
-  
-                        <td>
-                          <button type="button" (click)="editProject(project)"><i class="bi bi-pencil-fill"></i></button>
-                          <button type="button" (click)="deleteProject(project.projectId)"><i class="bi bi-trash-fill"></i></button>
-                        </td>
-                      
-           
-                  </tr>     
+      <ng-template ngbNavContent>
+        <!--TABLA-->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>TITLE</th>
+              <th>PUBLISHED</th>
+              <th>DEADLINE</th>
+              <th>BID</th>
+              <th>STATE</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="projects">
+            <tr
+              *ngFor="let project of projects"
+              [formGroup]="updateProjectForm"
+            >
+              <td>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="title"
+                />
+                <span
+                  class="form-text text-danger"
+                  *ngIf="isValidProject('title')"
+                >
+                  Hay que introducir un título válido
+                </span>
+                {{ project.title }} - {{ project.projectId }}
+              </td>
+
+              <td>
+                <app-date-picker
+                  (sendProjectDate)="
+                    [sendDate('project.publishedDate', $event)]
+                  "
+                  (showDate)="(project.publishedDate)"
+                >
+                </app-date-picker>
+              </td>
+              <td>
+                <app-date-picker
+                  (sendProjectDate)="[sendDate('project.deadlineDate', $event)]"
+                  (showDate)="(project.deadlineDate)"
+                >
+                </app-date-picker>
+              </td>
+              <td>
+                <input type="text" class="form-control" formControlName="bid" />
+                <span
+                  class="form-text text-danger"
+                  *ngIf="isValidProject('bid')"
+                >
+                  Hay que introducir el precio </span
+                >{{ project.bid }}
+              </td>
+              <td>
+                <input
+                  #projectId
+                  type="text"
                 
-              </tbody>         
-          </table>
+                  class="form-control"
+                  formControlName="state"
+                />
+                <span
+                  class="form-text text-danger"
+                  *ngIf="isValidProject('state')"
+                >
+                  Hay que introducir el stado
+                </span>
+              </td>
+
+              <td>
+                <button type="button" (click)="editProject('projectId', projectId, project)">
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+                <button
+                  type="button"
+                  (click)="deleteProject(project.projectId)"
+                >
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </ng-template>
     </li>
-   
   </ul>
   <div [ngbNavOutlet]="nav" class="mt-2"></div>
 </div>
-
-
-
-         
-
-        
-
-
-
-
-
-
-    
-
-
-  
-
-  

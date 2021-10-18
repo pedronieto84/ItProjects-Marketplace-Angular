@@ -69,6 +69,7 @@ export class ApiService {
   // Función updateProject
   updateProject(project: Project) {
     console.log('Se ha ejecutado la función: updateProject', project);
+   
     return this.http.post(this.baseUrl+'/updateProject', project);
   }
 

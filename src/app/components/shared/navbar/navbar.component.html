@@ -4,7 +4,7 @@
       type="button"
       class="btn btn-primary px-5"
       [routerLink]="['admin']"
-      *ngIf="(userObservable$ | async)?.admin">
+      *ngIf="( userObservable$ | async )?.admin">
       Admin
     </button>
     <button
@@ -30,7 +30,7 @@
         type="button"
         class="btn btn-primary"
         [routerLink]="['el-meu-compte']"
-        *ngIf="userObservable$ | async">
+        *ngIf="userObservable$ | async  ">
       <!--Esta pipe lo que hace es suscribirse a un Observable y 
         devolver el último valor emitido, en este caso el usuario y su nombre. 
         Además, cuando el componente se destruye, la pipe cancela la suscripción por ti.-->
@@ -41,7 +41,7 @@
         type="button"
         class="btn btn-secondary"
         [routerLink]="['login']"
-        *ngIf="userObservable$ | async; else logIn">
+        *ngIf=" ( userObservable$ | async) ; else logIn">
       Log Off
     </button>
 

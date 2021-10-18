@@ -20,7 +20,6 @@ export class MyAccountComponent implements OnInit {
   currentUserTypeInstitution:string ="";
  
   projects = [];
-  project: Project;
   
   //pestañas activas
   active = 1;
@@ -113,14 +112,19 @@ export class MyAccountComponent implements OnInit {
 
 
   //TAB PROJECTS 
-  editProject(projectObject:Project){
+  editProject(key, value, object){
+
+    object[key]= value;
+    
     console.log(this.updateProjectForm.invalid)
     if(this.updateProjectForm.invalid){
+
       this.updateProjectForm.markAllAsTouched();      
       return;
     }else{
       this.ApiService.updateProject(projectObject).subscribe(
         (data: any[]) => {    
+          
           alert("El projecto se ha actualizado");     
         },
         err => {
