@@ -41,7 +41,7 @@
         type="button"
         class="btn btn-secondary"
         [routerLink]="['login']"
-        *ngIf=" ( userObservable$ | async) ; else logIn">
+        *ngIf="(userObservable$ | async); else logIn">
       Log Off
     </button>
 

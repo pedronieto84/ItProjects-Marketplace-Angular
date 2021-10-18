@@ -26,21 +26,21 @@ export class LoginComponent implements OnInit {
                 public loginService: LoginService, 
                 private router: Router) { }
                 
-  /* Método para el login del usuari*/
- async onLogin() {
-   
-    if(this.loginForm.invalid) {
-      
+  /* Método para el login del usuario*/
+ async login() {  
+
+    if(this.loginForm.invalid) {      
       return;
     }
     const loginUser = this.loginForm.value;
-      this.isLoading = false;
+    this.isLoading = false;
 
       try{
-
+        
         const res = await this.loginService.onLogin(loginUser)
         this.currentUser = res;
-        this.loginService.updateUser(res)
+        this.loginService.updateUser(res);
+
         // Guardo el objeto como un string en el navegador
         localStorage.setItem('usuario', JSON.stringify(res));
         // asdfasfdsa
