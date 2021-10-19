@@ -18,8 +18,8 @@ export class ApiService {
 
   // Función getProjects - Get all projects
 
-  getProjects(userId?:string) {
-        
+  getProjects(userId?:string) { /* TODO */
+
     /********************** %20  PEDRO ¡EL ESPACIO! ***************/
     return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId);  
     
