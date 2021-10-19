@@ -12,27 +12,23 @@ const routes: Routes = [
 
 
   {
-    path: 'detall-projecte',
+    path: 'detall-projecte/:id',
     loadChildren: () => import('./pages/project-detail/project-detail.module').then(m => m.ProjectDetailModule)
   },
   {
     path: 'crear-projecte',
-    component: CreateProjectComponent,
     loadChildren: () => import('./pages/create-project/create-project.module').then(m => m.CreateProjectModule)
   },
   { 
     path: 'admin',
-    component: AdminComponent,
     loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule)
   },
   { 
     path: 'projects',
-    component: ProjectsComponent,
     loadChildren: () => import('./pages/projects/projects.module').then(m => m.ProjectsModule)
   },
   {
     path: 'login',
-    component: LoginComponent,
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
@@ -40,12 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'crear-compte',
-    loadChildren: () => import('./pages/create-account/create-account.module').then(m => m.CreateAccountModule)
-  },
-  {
     path: 'el-meu-compte',
-    component: MyAccountComponent,
     loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule)
   },
   {
