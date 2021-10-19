@@ -11,17 +11,21 @@ export interface User {
 
 }
 
+
+
+
 export interface Project {
 
     projectId: string
     title: string
-    ownasdfasdfasfadsferId: string
-    asasdfasdfasdfdfasdf: Date
-    adsf: Date
-    asasdfasdfadsfdfasdf: string[] // refers to the TechObject Id's
-    asdadsfadsffasdf: string[] // will be the url of the files
-    adsfasf: string
-    asdfasd: ProjectState // he cambiado estate
+    ownerId: string
+    publishedDate: Date | number
+    deadlineDate: Date | number
+    techSet: string[] // refers to the TechObject Id's
+    filesArray: string[] // will be the url of the files
+    bid: number;
+    shortExplanation: string
+    state: ProjectState
 }
 
 export interface TechObject {
@@ -34,4 +38,9 @@ export interface ProjectState {
     
     id: string
     name: string
+}
+
+export interface loginUser {
+    email: string
+    password: string
 }
