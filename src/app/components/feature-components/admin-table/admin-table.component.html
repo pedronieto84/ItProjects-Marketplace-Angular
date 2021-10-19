@@ -1,8 +1,65 @@
-<p>admin-table works!</p>
+<form>
 
-<p>
-  This is a more complete example with a service that simulates server calling:
-</p>
+  <!-- Search -->
+  <div class="form-group form-inline">
+      Full text search: <input class="form-control ml-2" type="text" name="searchTerm" /> <!-- [(ngModel)]="service.searchTerm" -->
+      <!-- <span class="ml-3" *ngIf="service.loading$ | async">Loading...</span> -->
+  </div>
+
+  <!-- Table -->  
+  <table class="table table-striped table-responsive">
+
+    <!-- Header -->
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" sortable="name">Name</th> <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="published" >Published</th> <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="deadline">Deadline</th> <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="bid">Bid</th> <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="state">State</th> <!-- (sort)="onSort($event)" -->
+      </tr>
+    </thead>
+
+    <!-- Body -->
+    <tbody>      
+      <tr> <!-- *ngFor="let country of countries$ | async" -->
+        <!-- Id -->
+        <th scope="row">5</th> <!-- {{ country.id }} -->
+        <!-- Name -->
+        <td>
+          <!-- <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px"> -->
+          <ngb-highlight result="Test Project"></ngb-highlight> <!-- [result]="country.name" [term]="service.searchTerm" -->
+        </td>
+        <!-- Published -->
+        <td><ngb-highlight result="19/10/2021"></ngb-highlight></td> <!-- [result]="country.area | number" [term]="service.searchTerm" -->
+        <!-- Deadline -->
+        <td><ngb-highlight result="31/12/2021"></ngb-highlight></td> <!-- [result]="country.population | number" [term]="service.searchTerm" -->
+        <!-- Bid -->
+        <td><ngb-highlight result="100"></ngb-highlight></td>
+        <!-- State -->
+        <td><ngb-highlight result="Accepted"></ngb-highlight></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <div class="d-flex justify-content-between p-2">
+
+    <!-- Pagination -->
+    <ngb-pagination
+      > <!-- [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize" -->
+    </ngb-pagination>
+
+    <!-- Select (Items per page)-->
+    <select class="custom-select" style="width: auto" name="pageSize"> <!-- [(ngModel)]="service.pageSize" -->
+      <option ngValue="2">2 items per page</option>
+      <option ngValue="4">4 items per page</option>
+      <option ngValue="6">6 items per page</option> <!-- [ngValue]="6" -->
+    </select>
+  </div>
+</form>
+
 <!--
 <ul>
   <li>an observable async service to fetch a list of countries</li>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
+  /* PROPERTIES */
+  active = 1; //Controls active link
   constructor() { }
 
   ngOnInit() {
