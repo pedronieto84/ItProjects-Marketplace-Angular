@@ -1,1 +1,28 @@
-<p>admin works!</p>
+<div class="container">
+
+    <div class="border rounded p-3">
+        <!-- Nav: Users o Projects -->
+        <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <!-- Users -->
+            <li [ngbNavItem]="1">
+                <a ngbNavLink>Users</a>
+                <ng-template ngbNavContent>
+                    <!-- User Table Component -->
+                    <p>Future User Table</p>
+                
+                </ng-template>
+            </li>
+            <!-- Projects -->
+            <li [ngbNavItem]="2">
+                <a ngbNavLink>Projects</a>
+                <ng-template ngbNavContent>
+                    <!-- Admin Table Component -->
+                    <app-admin-table></app-admin-table>                
+                </ng-template>
+            </li>
+        </ul>
+
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+    </div>
+</div>

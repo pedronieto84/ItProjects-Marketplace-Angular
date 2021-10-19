@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Project, User } from '../interfaces/interfaces';
 
 @Injectable({
@@ -11,9 +12,14 @@ export class ApiService {
 
   baseUrl: string = 'https://us-central1-asamblea-27a8d.cloudfunctions.net';
 
+  getProjectx(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.baseUrl + '/getProjects');
+  }
+
   // Función getProjects - Get all projects
 
-  getProjects(userId:string) {
+  getProjects(userId?:string) { /* TODO */
+
     /********************** %20  PEDRO ¡EL ESPACIO! ***************/
     console.log(userId); 
     return this.http.get(this.baseUrl+'/getProjects?userId='+userId); 
