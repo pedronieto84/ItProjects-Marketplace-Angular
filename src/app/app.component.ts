@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'itProjects-Marketplace-Angular';
+
+  ngOnInit() {
+    console.log("Hello World!");
+  }
 }
