@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from './components/shared/shared.module';
+import { SortableDirective } from './directives/sortable.directive';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
+    SortableDirective,    
   ],
   imports: [
     BrowserModule,
