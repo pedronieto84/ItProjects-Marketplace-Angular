@@ -31,7 +31,7 @@ export class AdminTableComponent implements OnInit {
   /* METHODS */
   //Subscribes to the ApiService's observable and gets all projects
   getProjects() {
-    this.apiService.getProjects()
+    this.apiService.getAllProjects()
       .subscribe(projects => this.projects = projects); // console.log(projects)
   }
 }
