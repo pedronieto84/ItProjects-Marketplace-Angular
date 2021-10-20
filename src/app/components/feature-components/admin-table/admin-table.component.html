@@ -23,22 +23,19 @@
 
     <!-- Body -->
     <tbody>      
-      <tr> <!-- *ngFor="let country of countries$ | async" -->
+      <tr *ngFor="let project of projects"> <!-- Documentation example had an async pipe, like: *ngFor="let project of projects | async" -->
         <!-- Id -->
-        <th scope="row">5</th> <!-- {{ country.id }} -->
+        <th scope="row">{{ project.projectId }}</th> <!-- {{ country.id }} -->
         <!-- Name -->
-        <td>
-          <!-- <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px"> -->
-          <ngb-highlight result="Test Project"></ngb-highlight> <!-- [result]="country.name" [term]="service.searchTerm" -->
-        </td>
+        <td><ngb-highlight [result]="project.title"></ngb-highlight></td> <!-- Documentation example: [result]="country.name" [term]="service.searchTerm" -->        
         <!-- Published -->
-        <td><ngb-highlight result="19/10/2021"></ngb-highlight></td> <!-- [result]="country.area | number" [term]="service.searchTerm" -->
+        <td><ngb-highlight [result]="project.publishedDate | date: 'dd/MM/yyyy'"></ngb-highlight></td> <!-- [result]="country.area | number" [term]="service.searchTerm" -->
         <!-- Deadline -->
-        <td><ngb-highlight result="31/12/2021"></ngb-highlight></td> <!-- [result]="country.population | number" [term]="service.searchTerm" -->
+        <td><ngb-highlight [result]="project.deadline | date: 'dd/MM/yyyy'"></ngb-highlight></td> <!-- [result]="country.population | number" [term]="service.searchTerm" -->
         <!-- Bid -->
-        <td><ngb-highlight result="100"></ngb-highlight></td>
+        <td><ngb-highlight [result]="project.bid"></ngb-highlight></td>
         <!-- State -->
-        <td><ngb-highlight result="Accepted"></ngb-highlight></td>
+        <td><ngb-highlight [result]="project.state"></ngb-highlight></td>
       </tr>
     </tbody>
   </table>

@@ -15,22 +15,24 @@ import { ApiService } from 'src/app/services/api.service';
 export class AdminTableComponent implements OnInit {
 
   /* PROPERTIES */
-  projects: Project[]; //Will save array of Projects
+  projects: Project[] = []; //Will save array of Projects
   total: Observable<number>;
 
   // @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>; 
 
-  constructor( public apiService: ApiService) {}
+  constructor( public apiService: ApiService) {
+    this.getProjects();
+  }
 
   ngOnInit(): void {
-    this.getProjects();  
+     
   }
 
   /* METHODS */
   //Subscribes to the ApiService's observable and gets all projects
   getProjects() {
-    this.apiService.getProjectx()
-      .subscribe(projects => this.projects = projects);
+    this.apiService.getProjects()
+      .subscribe(projects => this.projects = projects); // console.log(projects)
   }
 }
 

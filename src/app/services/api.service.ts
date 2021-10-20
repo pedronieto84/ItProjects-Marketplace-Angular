@@ -12,13 +12,20 @@ export class ApiService {
 
   baseUrl: string = 'https://us-central1-asamblea-27a8d.cloudfunctions.net';
 
+  /*Esta función queda integrada dentro de getProjects(userId?:string)
   getProjectx(): Observable<Project[]> {
     return this.http.get<Project[]>(this.baseUrl + '/getProjects');
-  }
+  }  
+  */
 
   // Función getProjects - Get all projects
+    //Si le pasamos parámetro, nos devolverá todos los proyectos de un usuario concreto
+    //Si no le pasamos parámetro, nos devolverá todos los proyectos de todos los usuarios
+  getProjects(userId?:string): Observable<Project[]> | Observable<Object> { 
 
-  getProjects(userId?:string) { /* TODO */
+    if (userId == undefined) { //Si no pasamos parámetro, nos devolverá todos los proyectos de todos los usuarios
+      return this.http.get<Project[]>(this.baseUrl + '/getProjects');
+    }
 
     /********************** %20  PEDRO ¡EL ESPACIO! ***************/
     return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId);  
