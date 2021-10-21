@@ -15,9 +15,8 @@ export class AdminTableComponent implements OnInit {
 
   /* PROPERTIES */
   projects: Project[] = []; //Will save array of Projects
-  total: Observable<number>;
 
-  // @ViewChildren(NgbdSortableHeader) headers: QueryList<NgbdSortableHeader>; 
+  
 
   constructor( public apiService: ApiService) {
     this.getProjects();
