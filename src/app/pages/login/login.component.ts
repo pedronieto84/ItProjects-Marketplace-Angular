@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   //declaramos variables
   loginForm: FormGroup;
-  isLoading = false;
   messageError: string = null;
   currentUser: User;
 
@@ -33,7 +32,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     const loginUser = this.loginForm.value;
-    this.isLoading = false;
 
       try{
         
@@ -45,12 +43,12 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('usuario', JSON.stringify(res));
 
         this.router.navigate(['/el-meu-compte']);
-        this.isLoading = false
+       
         
         
       }catch(err){
         this.messageError = err.error.error;
-        this.isLoading = true
+      
       }
 
   }
