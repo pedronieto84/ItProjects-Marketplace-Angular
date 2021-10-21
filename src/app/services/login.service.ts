@@ -12,18 +12,18 @@ import { ApiService } from './api.service';
 export class LoginService {
 
   //creamos observable y le pasamos un valor para inicializarlo (null)
-  private newUserSource = new BehaviorSubject< User | null >(null);
+  private newUserSource = new BehaviorSubject<User | null>(null);
 
   //exponemos el observable
   public currentUser$: Observable<User | null> = this.newUserSource.asObservable();
 
-  constructor(  private http:HttpClient,
-                public apiService: ApiService) { }  
+  constructor(private http: HttpClient,
+    public apiService: ApiService) { }
 
-  onLogin( user: loginUser ):Promise<any> {
+  onLogin(user: loginUser): Promise<any> {
     return this.http.post<User>(this.apiService.baseUrl + '/login', user).toPromise()
   }
-  
+
   /*Servicio de logout*/
   onLogout() {
     //borramos información del localstorage
@@ -32,7 +32,7 @@ export class LoginService {
     this.newUserSource.next(null);
   }
 
-  updateUser(user: User){
+  updateUser(user: User) {
     //enviamos el observable con el nuevo valor de user
     this.newUserSource.next(user)
   }

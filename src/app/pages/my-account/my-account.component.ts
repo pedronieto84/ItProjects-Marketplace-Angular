@@ -114,23 +114,22 @@ export class MyAccountComponent implements OnInit {
   //TAB PROJECTS 
   editProject(key, value, object){
 
-    object[key]= value;
+    object[key] = value;
     
     console.log(this.updateProjectForm.invalid)
     if(this.updateProjectForm.invalid){
-
       this.updateProjectForm.markAllAsTouched();      
       return;
-    }else{
-      this.ApiService.updateProject(projectObject).subscribe(
-        (data: any[]) => {    
-          
-          alert("El projecto se ha actualizado");     
-        },
-        err => {
-          console.log("Error");
-        });
-   }
+    }
+  //   else{
+  //     this.ApiService.updateProject(projectObject).subscribe(
+  //       (data: any[]) => {    
+  //         alert("El projecto se ha actualizado");     
+  //       },
+  //       err => {
+  //         console.log("Error");
+  //       });
+  //  }
 
   }
   deleteProject(IdProject:string){
@@ -145,8 +144,6 @@ export class MyAccountComponent implements OnInit {
           console.log("Error");
       });
   }
-
-
 
   sendDate(dateType: string, date: any) {
     console.log("sendDate: ",dateType,date )
