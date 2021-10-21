@@ -1,37 +1,61 @@
 <form>
-
   <!-- Search -->
   <div class="form-group form-inline">
-      Search project by name: <input class="form-control ml-2" type="text" name="searchTerm" [(ngModel)]="searchTerm" (input)="search($event.target.value)"/> <!-- [(ngModel)]="service.searchTerm" [(ngModel)]="sortProjectsService.searchTerm" -->
-      <!-- <span class="ml-3" *ngIf="sortProjectsService.loading$ | async">Loading...</span> -->
+    Search project by name:
+    <input
+      class="form-control ml-2"
+      type="text"
+      name="searchTerm"
+      [(ngModel)]="searchTerm"
+      (input)="search($event.target.value)"
+    />
+    <!-- [(ngModel)]="service.searchTerm" [(ngModel)]="sortProjectsService.searchTerm" -->
+    <!-- <span class="ml-3" *ngIf="sortProjectsService.loading$ | async">Loading...</span> -->
   </div>
 
-  <!-- Table -->  
+  <!-- Table -->
   <table class="table table-striped table-responsive">
-
     <!-- Header -->
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col" sortable="title">Name</th> <!-- (sort)="onSort($event)" -->
-        <th scope="col" sortable="published">Published</th> <!-- (sort)="onSort($event)" -->
-        <th scope="col" sortable="deadline">Deadline</th> <!-- (sort)="onSort($event)" -->
-        <th scope="col" sortable="bid">Bid</th> <!-- (sort)="onSort($event)" -->
-        <th scope="col" sortable="state">State</th> <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="title">Name</th>
+        <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="published">Published</th>
+        <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="deadline">Deadline</th>
+        <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="bid">Bid</th>
+        <!-- (sort)="onSort($event)" -->
+        <th scope="col" sortable="state">State</th>
+        <!-- (sort)="onSort($event)" -->
       </tr>
     </thead>
 
     <!-- Body -->
-    <tbody>      
-      <tr *ngFor="let project of projects | listFilterPipe: searchTerm | slice: (page-1) * pageSize : page * pageSize; index as i"> <!-- Documentation example had an async pipe, like: *ngFor="let project of projects$ | async" -->
+    <tbody>
+      <tr *ngFor="let project of projects | listFilterPipe: searchTerm">
+        <!-- Documentation example had an async pipe, like: *ngFor="let project of projects$ | async" -->
         <!-- Id -->
-        <th scope="row">{{ project.projectId }}</th> <!-- {{ country.id }} -->
+        <th scope="row">{{ project.projectId }}</th>
+        <!-- {{ country.id }} -->
         <!-- Name -->
-        <td><ngb-highlight [result]="project.title"></ngb-highlight></td> <!-- Documentation example: [result]="country.name" [term]="service.searchTerm" -->        
+        <td><ngb-highlight [result]="project.title"></ngb-highlight></td>
+        <!-- Documentation example: [result]="country.name" [term]="service.searchTerm" -->
         <!-- Published -->
-        <td><ngb-highlight [result]="project.publishedDate | date: 'dd/MM/yyyy'"></ngb-highlight></td> <!-- [result]="country.area | number" [term]="service.searchTerm" -->
+        <td>
+          <ngb-highlight
+            [result]="project.publishedDate | date: 'dd/MM/yyyy'"
+          ></ngb-highlight>
+        </td>
+        <!-- [result]="country.area | number" [term]="service.searchTerm" -->
         <!-- Deadline -->
-        <td><ngb-highlight [result]="project.deadline | date: 'dd/MM/yyyy'"></ngb-highlight></td> <!-- [result]="country.population | number" [term]="service.searchTerm" -->
+        <td>
+          <ngb-highlight
+            [result]="project.deadline | date: 'dd/MM/yyyy'"
+          ></ngb-highlight>
+        </td>
+        <!-- [result]="country.population | number" [term]="service.searchTerm" -->
         <!-- Bid -->
         <td><ngb-highlight [result]="project.bid"></ngb-highlight></td>
         <!-- State -->
@@ -40,12 +64,16 @@
     </tbody>
   </table>
 
-  
   <div class="d-flex justify-content-between p-2">
-
     <!-- Pagination -->
-    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [boundaryLinks]="true" [pageSize]="pageSize"
-      > <!-- [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize" -->
+    <ngb-pagination
+      [collectionSize]="collectionSize"
+      [(page)]="page"
+      [maxSize]="5"
+      [boundaryLinks]="true"
+      [pageSize]="pageSize"
+    >
+      <!-- [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize" -->
     </ngb-pagination>
 
     <!-- Select (Items per page)-->

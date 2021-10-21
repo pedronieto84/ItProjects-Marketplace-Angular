@@ -55,7 +55,7 @@ export class AdminTableComponent {
   }
 
   search(value: string): void {
-    this.projects = this.allProjects.filter(val => val.title.toLowerCase().includes(value));
+  //  this.projects = this.allProjects.filter(val => val.title.toLowerCase().includes(value));
     this.collectionSize = this.projects.length;
   }
 
