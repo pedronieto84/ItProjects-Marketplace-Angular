@@ -21,6 +21,7 @@ export interface Project {
     ownerId: string
     publishedDate: Date | number
     deadlineDate: Date | number
+    deadline: Date | number
     techSet: string[] // refers to the TechObject Id's
     filesArray: string[] // will be the url of the files
     bid: number;
