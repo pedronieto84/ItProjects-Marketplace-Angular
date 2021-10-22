@@ -1,5 +1,5 @@
 /* Angular Imports */
-import {AfterViewInit, Component, ViewChild, DoCheck} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 
 /* Angular Material Imports */
 import {MatPaginator} from '@angular/material/paginator';
@@ -11,21 +11,21 @@ import { Project } from 'src/app/interfaces/interfaces';
 import { ApiService } from 'src/app/services/api.service';
 
 //UserData: mockup interface para probar la tabla
-export interface UserData {
+/* export interface UserData {
   id: string;
   name: string;
   progress: string;
   fruit: string;
-}
+} */
 
 /** Constants used to fill up our data base. */
-const FRUITS: string[] = [
+/*const FRUITS: string[] = [
   'blueberry', 'lychee', 'kiwi', 'mango', 'peach', 'lime', 'pomegranate', 'pineapple'
 ];
 const NAMES: string[] = [
   'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
   'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+];  */
 
 @Component({
   selector: 'app-admin-table',
