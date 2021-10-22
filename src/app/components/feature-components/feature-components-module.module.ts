@@ -5,12 +5,14 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';   
+import { MatInputModule } from '@angular/material/input';
+import { UserTableComponent } from './user-table/user-table.component';   
 
 
 @NgModule({
   declarations: [
-    AdminTableComponent
+    AdminTableComponent,
+    UserTableComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule
   ],
   exports : [
-    AdminTableComponent
+    AdminTableComponent,
+    UserTableComponent
   ]
 })
 export class FeatureComponentsModuleModule { }
