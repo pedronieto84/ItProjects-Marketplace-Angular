@@ -6,7 +6,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserTableComponent } from './user-table/user-table.component';   
+import { UserTableComponent } from './user-table/user-table.component';  
+import {MatSortModule} from '@angular/material/sort'; 
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { UserTableComponent } from './user-table/user-table.component';
     MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule
   ],
   exports : [
     AdminTableComponent,
