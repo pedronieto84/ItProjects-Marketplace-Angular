@@ -12,13 +12,15 @@ export class ApiService {
 
   baseUrl: string = 'https://us-central1-asamblea-27a8d.cloudfunctions.net';
 
-  getProjectx(): Observable<Project[]> {
+  //Retorna tots els projectes de tots els usuaris
+  getAllProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.baseUrl + '/getProjects');
-  }
+  }  
+  
 
   // Función getProjects - Get all projects
 
-  getProjects(userId?:string) { /* TODO */
+  getProjects(userId:string)  { 
 
     /********************** %20  PEDRO ¡EL ESPACIO! ***************/
     return this.http.get(this.baseUrl+'/getProjects?userId%20='+userId);  
